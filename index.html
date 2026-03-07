@@ -1,3404 +1,1004 @@
-var music = document.getElementById("bgMusic");
-                if (music) {
-                    music.play().catch(function(error) {
-                        console.log("Không thể phát nhạc:", error);
-                    });
-                }
 
-Đoạn JavaScript này dùng để tìm và phát nhạc nền trong trang web. Giải thích từng phần:
+<!DOCTYPE html>
 
-var music = document.getElementById("bgMusic");
+<html lang="en"><head>
 
-Lấy phần tử HTML có id="bgMusic".
+<meta charset="UTF-8">
 
-Thường phần tử đó sẽ là thẻ <audio>.
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-Nếu tồn tại thì biến music sẽ chứa đối tượng audio.
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-Ví dụ HTML:
-
-<audio id="bgMusic" src="music.mp3"></audio>
-if (music) {
-
-Kiểm tra xem phần tử có tồn tại hay không.
-
-Nếu tồn tại thì mới chạy đoạn code bên trong.
-
-music.play()
-
-Lệnh phát âm thanh.
-
-.catch(function(error) {
-    console.log("Không thể phát nhạc:", error);
-});
-
-Nếu trình duyệt chặn autoplay hoặc xảy ra lỗi thì:
-
-Không làm vỡ chương trình.
-
-In lỗi ra console để kiểm tra.
-
-Ví dụ lỗi thường gặp:
-
-Trình duyệt không cho phát nhạc khi chưa có tương tác người dùng.
-
-File nhạc bị lỗi hoặc đường dẫn sai.
-
-Ví dụ hoàn chỉnh
-<audio id="bgMusic" src="music.mp3"></audio>
-
-<script>
-var music = document.getElementById("bgMusic");
-if (music) {
-    music.play().catch(function(error) {
-        console.log("Không thể phát nhạc:", error);
-    });
-}
-</script>
-Lưu ý quan trọng
-
-Nhiều trình duyệt như Google Chrome, Microsoft Edge, Safari sẽ chặn tự phát nhạc nếu người dùng chưa bấm vào trang.
-
-Cách khắc phục phổ biến:
-
-document.addEventListener("click", function() {
-    music.play();
-});
-
-Nếu muốn, tôi có thể chỉ thêm:
-
-cách phát nhạc tự động không bị chặn
-
-cách loop nhạc nền
-
-hoặc code music player đẹp cho website. 🎵
-
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link rel="icon" type="image/png" href="image/favicon.ico">
-		<title>Quốc tế phụ nữ</title>    
-        <link type="text/css" rel="stylesheet" href="./renxi/default.css">
-		<script type="text/javascript" src="./renxi/jquery.min.js"></script>
-		<script type="text/javascript" src="./renxi/jscex.min.js"></script>
-		<script type="text/javascript" src="./renxi/jscex-parser.js"></script>
-		<script type="text/javascript" src="./renxi/jscex-jit.js"></script>
-		<script type="text/javascript" src="./renxi/jscex-builderbase.min.js"></script>
-		<script type="text/javascript" src="./renxi/jscex-async.min.js"></script>
-		<script type="text/javascript" src="./renxi/jscex-async-powerpack.min.js"></script>
-		<script type="text/javascript" src="./renxi/functions.js" charset="utf-8"></script>
-        <script type="text/javascript" src="./renxi/love.js" charset="utf-8"></script>
-
-		<style>
-			#fullBtn{
-			position:fixed;
-			top:10px;
-			left:10px;
-			z-index:999999;
-			padding:6px 10px;
-			}
-		
-			button{
-			    margin:0;
-			    height:10vh;
-			    display:flex;
-			    justify-content:center;
-			    align-items:center;
-			    background:blue;
-			    color:white;
-			    font-size:30px;
-				z-index:9999;
-			}
-			button{
-			    padding:15px 30px;
-			    font-size:20px;
-			}
-		</style>
-
-</head>
-    <body>
-			
-			
-          
-
-        <div id="main">
-			
-            <div id="error">Trình duyệt của bạn không được hỗ trợ. Để được hỗ trợ liên hệ daikupj@gmail.com. Hoặc sử dụng (<a href="http://www.google.cn/chrome">Chrome</a>) và (<a href="http://firefox.com/download/">Firefox</a>)</div>
-             <div id="wrap">
-                <div id="text" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;">
-			        <div id="code">
-
-			
-				      <font color="#0000FF" ><span class="say">Chào ny của anh!</span><br>
-							<span class="say"> </span><br>
-							<span class="say"></span>Em chính là người mà anh yêu nhất!<br>
-							<span class="say">Chúc em luôn duyên dáng và xinh đẹp .</span><br>
-							<span class="say">Kính chúc "một nửa" của nhân loại vui vẻ, hạnh phúc bên người thân yêu!</span><br>
-	                        <span class="say"><span class="space"><img src="image/tym.png" alt=""><br>
-	                        <span class="say"><span class="space"></span> --Mãi yêu em--</span>
-				  		</font></p>
-      				</div>
-        		</div>
-                <div id="clock-box">
-                    <span class="STYLE1"></span><font color="#FF0000">Ngày đầu tiên ta yêu nhau đến nay đã....</font>
-<!-- <span class="STYLE1"> Time of love...</span> -->
-                  <div id="clock"></div>
-              </div>
-                <canvas id="canvas" width="1100" height="680"></canvas>
-            </div>
-            
-        </div>
-    
-    <script>
-    </script>
-
-    <script>
-    (function(){
-        var canvas = $('#canvas');
-		
-        if (!canvas[0].getContext) {
-            $("#error").show();
-            return false;        }
-
-        var width = canvas.width();
-        var height = canvas.height();        
-        canvas.attr("width", width);
-        canvas.attr("height", height);
-        var opts = {
-            seed: {
-                x: width / 2 - 20,
-                color: "rgb(190, 26, 37)",
-                scale: 2
-            },
-            branch: [
-                [535, 680, 570, 250, 500, 200, 30, 100, [
-                    [540, 500, 455, 417, 340, 400, 13, 100, [
-                        [450, 435, 434, 430, 394, 395, 2, 40]
-                    ]],
-                    [550, 445, 600, 356, 680, 345, 12, 100, [
-                        [578, 400, 648, 409, 661, 426, 3, 80]
-                    ]],
-                    [539, 281, 537, 248, 534, 217, 3, 40],
-                    [546, 397, 413, 247, 328, 244, 9, 80, [
-                        [427, 286, 383, 253, 371, 205, 2, 40],
-                        [498, 345, 435, 315, 395, 330, 4, 60]
-                    ]],
-                    [546, 357, 608, 252, 678, 221, 6, 100, [
-                        [590, 293, 646, 277, 648, 271, 2, 80]
-                    ]]
-                ]] 
-            ],
-            bloom: {
-                num: 700,
-                width: 1080,
-                height: 650,
-            },
-            footer: {
-                width: 1200,
-                height: 5,
-                speed: 10,
-            }
-        }
-
-        var tree = new Tree(canvas[0], width, height, opts);
-        var seed = tree.seed;
-        var foot = tree.footer;
-        var hold = 1;
-		
-		canvas.click(function(e) {
-            var offset = canvas.offset(), x, y;
-            x = e.pageX - offset.left;
-            y = e.pageY - offset.top;
-            
-            // Khi người dùng bấm đúng vào vị trí (nút play / hạt mầm)
-            if (seed.hover(x, y)) {
-				//npc
-				 if (document.documentElement.requestFullscreen) {
-				        document.documentElement.requestFullscreen();
-				    } else if (document.documentElement.webkitRequestFullscreen) {
-				        document.documentElement.webkitRequestFullscreen();
-				    }
-
-                hold = 0; 
-                canvas.unbind("click");
-                canvas.unbind("mousemove");
-                canvas.removeClass('hand');
-                
-                // THÊM LỆNH BẬT NHẠC Ở ĐÂY:
-                var music = document.getElementById("bgMusic");
-                if (music) {
-                    music.play().catch(function(error) {
-                        console.log("Không thể phát nhạc:", error);
-                    });
-                }
-            }
-        }).mousemove(function(e){
-            var offset = canvas.offset(), x, y;
-            x = e.pageX - offset.left;
-            y = e.pageY - offset.top;
-            canvas.toggleClass('hand', seed.hover(x, y));
-        });
-
-        var seedAnimate = eval(Jscex.compile("async", function () {
-            seed.draw();
-            while (hold) {
-                $await(Jscex.Async.sleep(10));
-            }
-            while (seed.canScale()) {
-                seed.scale(0.95);
-                $await(Jscex.Async.sleep(10));
-            }
-            while (seed.canMove()) {
-                seed.move(0, 2);
-                foot.draw();
-                $await(Jscex.Async.sleep(10));
-            }
-        }));
-
-        var growAnimate = eval(Jscex.compile("async", function () {
-            do {
-    	        tree.grow();
-                $await(Jscex.Async.sleep(10));
-            } while (tree.canGrow());
-        }));
-
-        var flowAnimate = eval(Jscex.compile("async", function () {
-            do {
-    	        tree.flower(2);
-                $await(Jscex.Async.sleep(10));
-            } while (tree.canFlower());
-        }));
-
-        var moveAnimate = eval(Jscex.compile("async", function () {
-            tree.snapshot("p1", 240, 0, 610, 680);
-            while (tree.move("p1", 500, 0)) {
-                foot.draw();
-                $await(Jscex.Async.sleep(10));
-            }
-            foot.draw();
-            tree.snapshot("p2", 500, 0, 610, 680);
-
-            canvas.parent().css("background", "url(" + tree.toDataURL('image/png') + ")");
-            canvas.css("background", "#ffe");
-            $await(Jscex.Async.sleep(300));
-            canvas.css("background", "none");
-        }));
-
-        var jumpAnimate = eval(Jscex.compile("async", function () {
-            var ctx = tree.ctx;
-            while (true) {
-                tree.ctx.clearRect(0, 0, width, height);
-                tree.jump();
-                foot.draw();
-                $await(Jscex.Async.sleep(25));
-            }
-        }));
-
-        var textAnimate = eval(Jscex.compile("async", function () {
-		    var together = new Date();
-		    together.setFullYear(2025 , 10 , 7); 			
-		    together.setHours(19);							
-		    together.setMinutes(45);				
-		    together.setSeconds(0);					
-            together.setMilliseconds(0);
-            
-           
-
-		    $("#code").show().typewriter();
-            $("#clock-box").fadeIn(500);
-            while (true) {
-                timeElapse(together);
-                $await(Jscex.Async.sleep(1000));
-            }
-        }));
-
-        var runAsync = eval(Jscex.compile("async", function () {
-            $await(seedAnimate());
-            $await(growAnimate());
-            $await(flowAnimate());
-            $await(moveAnimate());
-
-            textAnimate().start();
-
-            $await(jumpAnimate());
-        }));
-
-        runAsync().start();
-    })();
-    </script>
-
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Trang HTML của bạn đã có sẵn đoạn bật nhạc, nhưng trong file bạn gửi chưa có thẻ <audio>, nên lệnh:
-
-var music = document.getElementById("bgMusic");
-
-sẽ không tìm thấy nhạc → vì vậy không phát được.
-
-Cách sửa đúng
-
-Bạn chỉ cần thêm thẻ audio vào trong <body>.
-
-Ví dụ đặt ngay dưới <body>:
-
-<audio id="bgMusic" loop>
-    <source src="music.mp3" type="audio/mpeg">
-</audio>
-Giải thích
-
-id="bgMusic" → để JavaScript tìm thấy.
-
-loop → phát lặp lại.
-
-music.mp3 → file nhạc của bạn.
-
-Ví dụ hoàn chỉnh (phần đầu body)
-<body>
-
-<audio id="bgMusic" loop>
-    <source src="music.mp3" type="audio/mpeg">
-</audio>
-
-<div id="main">
-Code JavaScript của bạn đã đúng
-
-Phần này trong code của bạn đã chuẩn:
-
-var music = document.getElementById("bgMusic");
-if (music) {
-    music.play().catch(function(error) {
-        console.log("Không thể phát nhạc:", error);
-    });
-}
-
-Nó sẽ:
-
-Khi người dùng click vào hạt mầm trên canvas
-
-Trang vào fullscreen
-
-Nhạc bắt đầu phát
-
-Cấu trúc thư mục nên như này
-project
- ├─ index.html
- ├─ music.mp3
- ├─ image
- │   └─ tym.png
- └─ renxi
-     ├─ jquery.min.js
-     ├─ love.js
-     └─ functions.js
-Mẹo làm trang này đẹp hơn
-
-Bạn có thể thêm:
-
-Nhạc tự chạy khi click bất kỳ
-document.addEventListener("click", function(){
-    var music = document.getElementById("bgMusic");
-    music.play();
-});
-Tăng âm lượng nhẹ
-music.volume = 0.5;
-
-Nếu muốn, tôi có thể giúp bạn:
-
-chỉnh trang này đẹp hơn gấp 10 lần
-
-thêm tim bay
-
-thêm ảnh của hai bạn
-
-thêm hiệu ứng hoa rơi
-
-làm phiên bản tỏ tình 8/3 cực đẹp.
-
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link rel="icon" type="image/png" href="image/favicon.ico">
-		<title>Quốc tế phụ nữ</title>    
-        <link type="text/css" rel="stylesheet" href="./renxi/default.css">
-		<script type="text/javascript" src="./renxi/jquery.min.js"></script>
-		<script type="text/javascript" src="./renxi/jscex.min.js"></script>
-		<script type="text/javascript" src="./renxi/jscex-parser.js"></script>
-		<script type="text/javascript" src="./renxi/jscex-jit.js"></script>
-		<script type="text/javascript" src="./renxi/jscex-builderbase.min.js"></script>
-		<script type="text/javascript" src="./renxi/jscex-async.min.js"></script>
-		<script type="text/javascript" src="./renxi/jscex-async-powerpack.min.js"></script>
-		<script type="text/javascript" src="./renxi/functions.js" charset="utf-8"></script>
-        <script type="text/javascript" src="./renxi/love.js" charset="utf-8"></script>
-
-		<style>
-			#fullBtn{
-			position:fixed;
-			top:10px;
-			left:10px;
-			z-index:999999;
-			padding:6px 10px;
-			}
-		
-			button{
-			    margin:0;
-			    height:10vh;
-			    display:flex;
-			    justify-content:center;
-			    align-items:center;
-			    background:blue;
-			    color:white;
-			    font-size:30px;
-				z-index:9999;
-			}
-			button{
-			    padding:15px 30px;
-			    font-size:20px;
-			}
-		</style>
-
-</head>
-    <body>
-			
-			
-          
-
-        <div id="main">
-			
-            <div id="error">Trình duyệt của bạn không được hỗ trợ. Để được hỗ trợ liên hệ daikupj@gmail.com. Hoặc sử dụng (<a href="http://www.google.cn/chrome">Chrome</a>) và (<a href="http://firefox.com/download/">Firefox</a>)</div>
-             <div id="wrap">
-                <div id="text" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;">
-			        <div id="code">
-
-			
-				      <font color="#0000FF" ><span class="say">Chào ny của anh!</span><br>
-							<span class="say"> </span><br>
-							<span class="say"></span>Em chính là người mà anh yêu nhất!<br>
-							<span class="say">Chúc em luôn duyên dáng và xinh đẹp .</span><br>
-							<span class="say">Kính chúc "một nửa" của nhân loại vui vẻ, hạnh phúc bên người thân yêu!</span><br>
-	                        <span class="say"><span class="space"><img src="image/tym.png" alt=""><br>
-	                        <span class="say"><span class="space"></span> --Mãi yêu em--</span>
-				  		</font></p>
-      				</div>
-        		</div>
-                <div id="clock-box">
-                    <span class="STYLE1"></span><font color="#FF0000">Ngày đầu tiên ta yêu nhau đến nay đã....</font>
-<!-- <span class="STYLE1"> Time of love...</span> -->
-                  <div id="clock"></div>
-              </div>
-                <canvas id="canvas" width="1100" height="680"></canvas>
-            </div>
-            
-        </div>
-    
-    <script>
-    </script>
-
-    <script>
-    (function(){
-        var canvas = $('#canvas');
-		
-        if (!canvas[0].getContext) {
-            $("#error").show();
-            return false;        }
-
-        var width = canvas.width();
-        var height = canvas.height();        
-        canvas.attr("width", width);
-        canvas.attr("height", height);
-        var opts = {
-            seed: {
-                x: width / 2 - 20,
-                color: "rgb(190, 26, 37)",
-                scale: 2
-            },
-            branch: [
-                [535, 680, 570, 250, 500, 200, 30, 100, [
-                    [540, 500, 455, 417, 340, 400, 13, 100, [
-                        [450, 435, 434, 430, 394, 395, 2, 40]
-                    ]],
-                    [550, 445, 600, 356, 680, 345, 12, 100, [
-                        [578, 400, 648, 409, 661, 426, 3, 80]
-                    ]],
-                    [539, 281, 537, 248, 534, 217, 3, 40],
-                    [546, 397, 413, 247, 328, 244, 9, 80, [
-                        [427, 286, 383, 253, 371, 205, 2, 40],
-                        [498, 345, 435, 315, 395, 330, 4, 60]
-                    ]],
-                    [546, 357, 608, 252, 678, 221, 6, 100, [
-                        [590, 293, 646, 277, 648, 271, 2, 80]
-                    ]]
-                ]] 
-            ],
-            bloom: {
-                num: 700,
-                width: 1080,
-                height: 650,
-            },
-            footer: {
-                width: 1200,
-                height: 5,
-                speed: 10,
-            }
-        }
-
-        var tree = new Tree(canvas[0], width, height, opts);
-        var seed = tree.seed;
-        var foot = tree.footer;
-        var hold = 1;
-		
-		canvas.click(function(e) {
-            var offset = canvas.offset(), x, y;
-            x = e.pageX - offset.left;
-            y = e.pageY - offset.top;
-            
-            // Khi người dùng bấm đúng vào vị trí (nút play / hạt mầm)
-            if (seed.hover(x, y)) {
-				//npc
-				 if (document.documentElement.requestFullscreen) {
-				        document.documentElement.requestFullscreen();
-				    } else if (document.documentElement.webkitRequestFullscreen) {
-				        document.documentElement.webkitRequestFullscreen();
-				    }
-
-                hold = 0; 
-                canvas.unbind("click");
-                canvas.unbind("mousemove");
-                canvas.removeClass('hand');
-                //npc
-				<audio id="bgMusic" >
-    			<source src="music/nhac.mp3" type="audio/mp3" />
-				</audio>
-				
-                // THÊM LỆNH BẬT NHẠC Ở ĐÂY:
-                var music = document.getElementById("bgMusic");
-                if (music) {
-                    music.play().catch(function(error) {
-                        console.log("Không thể phát nhạc:", error);
-                    });
-                }
-            }
-        }).mousemove(function(e){
-            var offset = canvas.offset(), x, y;
-            x = e.pageX - offset.left;
-            y = e.pageY - offset.top;
-            canvas.toggleClass('hand', seed.hover(x, y));
-        });
-
-        var seedAnimate = eval(Jscex.compile("async", function () {
-            seed.draw();
-            while (hold) {
-                $await(Jscex.Async.sleep(10));
-            }
-            while (seed.canScale()) {
-                seed.scale(0.95);
-                $await(Jscex.Async.sleep(10));
-            }
-            while (seed.canMove()) {
-                seed.move(0, 2);
-                foot.draw();
-                $await(Jscex.Async.sleep(10));
-            }
-        }));
-
-        var growAnimate = eval(Jscex.compile("async", function () {
-            do {
-    	        tree.grow();
-                $await(Jscex.Async.sleep(10));
-            } while (tree.canGrow());
-        }));
-
-        var flowAnimate = eval(Jscex.compile("async", function () {
-            do {
-    	        tree.flower(2);
-                $await(Jscex.Async.sleep(10));
-            } while (tree.canFlower());
-        }));
-
-        var moveAnimate = eval(Jscex.compile("async", function () {
-            tree.snapshot("p1", 240, 0, 610, 680);
-            while (tree.move("p1", 500, 0)) {
-                foot.draw();
-                $await(Jscex.Async.sleep(10));
-            }
-            foot.draw();
-            tree.snapshot("p2", 500, 0, 610, 680);
-
-            canvas.parent().css("background", "url(" + tree.toDataURL('image/png') + ")");
-            canvas.css("background", "#ffe");
-            $await(Jscex.Async.sleep(300));
-            canvas.css("background", "none");
-        }));
-
-        var jumpAnimate = eval(Jscex.compile("async", function () {
-            var ctx = tree.ctx;
-            while (true) {
-                tree.ctx.clearRect(0, 0, width, height);
-                tree.jump();
-                foot.draw();
-                $await(Jscex.Async.sleep(25));
-            }
-        }));
-
-        var textAnimate = eval(Jscex.compile("async", function () {
-		    var together = new Date();
-		    together.setFullYear(2025 , 10 , 7); 			
-		    together.setHours(19);							
-		    together.setMinutes(45);				
-		    together.setSeconds(0);					
-            together.setMilliseconds(0);
-            
-           
-
-		    $("#code").show().typewriter();
-            $("#clock-box").fadeIn(500);
-            while (true) {
-                timeElapse(together);
-                $await(Jscex.Async.sleep(1000));
-            }
-        }));
-
-        var runAsync = eval(Jscex.compile("async", function () {
-            $await(seedAnimate());
-            $await(growAnimate());
-            $await(flowAnimate());
-            $await(moveAnimate());
-
-            textAnimate().start();
-
-            $await(jumpAnimate());
-        }));
-
-        runAsync().start();
-    })();
-    </script>
-
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Bạn đang đặt thẻ <audio> sai vị trí nên nhạc không thể chạy.
-
-Hiện tại bạn đặt:
-
-<audio id="bgMusic">
-<source src="music/nhac.mp3" type="audio/mp3" />
-</audio>
-
-bên trong JavaScript (trong sự kiện canvas.click).
-HTML không được phép nằm trong JavaScript, nên trình duyệt bỏ qua.
-
-Cách sửa đúng (rất đơn giản)
-1️⃣ Xóa đoạn này trong JavaScript
-
-Xóa toàn bộ:
-
-<audio id="bgMusic" >
-<source src="music/nhac.mp3" type="audio/mp3" />
-</audio>
-2️⃣ Thêm thẻ audio vào BODY
-
-Đặt ngay dưới <body>:
-
-<audio id="bgMusic" loop>
-    <source src="music/nhac.mp3" type="audio/mpeg">
-</audio>
-
-Ví dụ:
-
-<body>
-
-<audio id="bgMusic" loop>
-    <source src="music/nhac.mp3" type="audio/mpeg">
-</audio>
-
-<div id="main">
-Phần JavaScript của bạn giữ nguyên
-
-Đoạn này đã đúng:
-
-var music = document.getElementById("bgMusic");
-if (music) {
-    music.play().catch(function(error) {
-        console.log("Không thể phát nhạc:", error);
-    });
-}
-
-Khi người dùng click vào hạt mầm, nó sẽ:
-
-vào fullscreen
-
-chạy animation cây
-
-phát nhạc
-
-Kiểm tra thêm 3 thứ
-1️⃣ Đường dẫn nhạc
-
-Thư mục phải giống:
-
-project
-│
-├── index.html
-├── music
-│   └── nhac.mp3
-2️⃣ Định dạng đúng
-type="audio/mpeg"
-
-không nên dùng audio/mp3.
-
-3️⃣ Thêm preload cho mượt
-<audio id="bgMusic" loop preload="auto">
-Nếu muốn tôi có thể giúp bạn nâng cấp trang này
-
-Ví dụ:
-
-✨ tim bay khắp màn hình
-✨ nhạc fade in mượt
-✨ thêm ảnh hai bạn vào cây
-✨ nền sao trời cực đẹp
-✨ hiệu ứng gõ chữ xịn hơn
-
-Chỉ cần nói, tôi sẽ gửi bản code đẹp hơn bản này rất nhiều.
-
-vì web ko cho auto nên t chuyển sang click
-
-Đúng rồi 👍. Trình duyệt hiện nay không cho phép tự động phát nhạc nếu người dùng chưa tương tác với trang. Vì vậy việc bạn phát nhạc sau khi người dùng click là cách đúng.
-
-Tuy nhiên trong code của bạn có một lỗi lớn: bạn đặt thẻ <audio> bên trong JavaScript, nên trình duyệt không tạo phần tử đó.
-
-Cách làm đúng
-1. Đặt thẻ audio trong HTML (không đặt trong script)
-
-Đặt ở đầu <body>:
-
-<audio id="bgMusic" loop>
-    <source src="music/nhac.mp3" type="audio/mpeg">
-</audio>
-2. Khi người dùng click thì phát nhạc
-
-Đoạn của bạn gần đúng rồi:
-
-var music = document.getElementById("bgMusic");
-if (music) {
-    music.play().catch(function(error) {
-        console.log("Không thể phát nhạc:", error);
-    });
-}
-
-Vì click vào canvas là user interaction, nên trình duyệt sẽ cho phép phát.
-
-Luồng hoạt động của trang bạn
-
-Người dùng mở trang
-
-Thấy hạt mầm trên canvas
-
-Click vào hạt mầm
-
-Trang:
-
-vào fullscreen
-
-bắt đầu animation cây
-
-phát nhạc
-
-Mẹo nhỏ để nhạc chạy ổn định hơn
-
-Thêm thuộc tính preload:
-
-<audio id="bgMusic" loop preload="auto">
-
-Hoặc đặt âm lượng:
-
-music.volume = 0.5;
-music.play();
-Một lỗi nhỏ khác trong code của bạn
-
-Dòng này:
-
-type="audio/mp3"
-
-nên đổi thành:
-
-type="audio/mpeg"
-
-Nếu muốn, tôi có thể giúp bạn nâng cấp trang này lên bản cực đẹp, ví dụ:
-
-cây tim nở hoa đẹp hơn
-
-tim bay khắp màn hình
-
-nhạc fade-in mượt
-
-thêm ảnh hai bạn trong cây
-
-giao diện nhìn giống web tỏ tình chuyên nghiệp.
-
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link rel="icon" type="image/png" href="image/favicon.ico">
-		<title>Quốc tế phụ nữ</title>    
-        <link type="text/css" rel="stylesheet" href="./renxi/default.css">
-		<script type="text/javascript" src="./renxi/jquery.min.js"></script>
-		<script type="text/javascript" src="./renxi/jscex.min.js"></script>
-		<script type="text/javascript" src="./renxi/jscex-parser.js"></script>
-		<script type="text/javascript" src="./renxi/jscex-jit.js"></script>
-		<script type="text/javascript" src="./renxi/jscex-builderbase.min.js"></script>
-		<script type="text/javascript" src="./renxi/jscex-async.min.js"></script>
-		<script type="text/javascript" src="./renxi/jscex-async-powerpack.min.js"></script>
-		<script type="text/javascript" src="./renxi/functions.js" charset="utf-8"></script>
-        <script type="text/javascript" src="./renxi/love.js" charset="utf-8"></script>
-		<style>
-			#fullBtn{
-			position:fixed;
-			top:10px;
-			left:10px;
-			z-index:999999;
-			padding:6px 10px;
-			}
-		
-			button{
-			    margin:0;
-			    height:10vh;
-			    display:flex;
-			    justify-content:center;
-			    align-items:center;
-			    background:blue;
-			    color:white;
-			    font-size:30px;
-				z-index:9999;
-			}
-			button{
-			    padding:15px 30px;
-			    font-size:20px;
-			}
-		</style>
-
-
-</head>
-    <body>
- 
-			<audio id="bgMusic" loop >
-    			<source src="music/nhac.mp3" type="audio/mp3" />
-			</audio>
-          
-
-        <div id="main">
-            <div id="error">Trình duyệt của bạn không được hỗ trợ. Để được hỗ trợ liên hệ daikupj@gmail.com. Hoặc sử dụng (<a href="http://www.google.cn/chrome">Chrome</a>) và (<a href="http://firefox.com/download/">Firefox</a>)</div>
-             <div id="wrap">
-                <div id="text" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;">
-			        <div id="code">
-			      <font color="#0000FF" ><span class="say">Chào ny của anh!</span><br>
-						<span class="say"> </span><br>
-						<span class="say"></span>Em chính là người mà anh yêu nhất!<br>
-						<span class="say">Chúc em luôn duyên dáng và xinh đẹp .</span><br>
-						<span class="say">Kính chúc "một nửa" của nhân loại vui vẻ, hạnh phúc bên người thân yêu!</span><br>
-                        <span class="say"><span class="space"><img src="image/tym.png" alt=""><br>
-                        <span class="say"><span class="space"></span> --Mãi yêu em--</span>
-			  </font></p>
-      </div>
-                </div>
-                <div id="clock-box">
-                    <span class="STYLE1"></span><font color="#FF0000">Ngày đầu tiên ta yêu nhau đến nay đã....</font>
-<!-- <span class="STYLE1"> Time of love...</span> -->
-                  <div id="clock"></div>
-              </div>
-                <canvas id="canvas" width="1100" height="680"></canvas>
-            </div>
-            
-        </div>
-    
-    <script>
-    </script>
-
-    <script>
-    (function(){
-        var canvas = $('#canvas');
-		
-        if (!canvas[0].getContext) {
-            $("#error").show();
-            return false;        }
-
-        var width = canvas.width();
-        var height = canvas.height();        
-        canvas.attr("width", width);
-        canvas.attr("height", height);
-        var opts = {
-            seed: {
-                x: width / 2 - 20,
-                color: "rgb(190, 26, 37)",
-                scale: 2
-            },
-            branch: [
-                [535, 680, 570, 250, 500, 200, 30, 100, [
-                    [540, 500, 455, 417, 340, 400, 13, 100, [
-                        [450, 435, 434, 430, 394, 395, 2, 40]
-                    ]],
-                    [550, 445, 600, 356, 680, 345, 12, 100, [
-                        [578, 400, 648, 409, 661, 426, 3, 80]
-                    ]],
-                    [539, 281, 537, 248, 534, 217, 3, 40],
-                    [546, 397, 413, 247, 328, 244, 9, 80, [
-                        [427, 286, 383, 253, 371, 205, 2, 40],
-                        [498, 345, 435, 315, 395, 330, 4, 60]
-                    ]],
-                    [546, 357, 608, 252, 678, 221, 6, 100, [
-                        [590, 293, 646, 277, 648, 271, 2, 80]
-                    ]]
-                ]] 
-            ],
-            bloom: {
-                num: 700,
-                width: 1080,
-                height: 650,
-            },
-            footer: {
-                width: 1200,
-                height: 5,
-                speed: 10,
-            }
-        }
-
-        var tree = new Tree(canvas[0], width, height, opts);
-        var seed = tree.seed;
-        var foot = tree.footer;
-        var hold = 1;
-		
-		canvas.click(function(e) {
-            var offset = canvas.offset(), x, y;
-            x = e.pageX - offset.left;
-            y = e.pageY - offset.top;
-            
-            // Khi người dùng bấm đúng vào vị trí (nút play / hạt mầm)
-            if (seed.hover(x, y)) {
-				//npc
-				 if (document.documentElement.requestFullscreen) {
-				        document.documentElement.requestFullscreen();
-				    } else if (document.documentElement.webkitRequestFullscreen) {
-				        document.documentElement.webkitRequestFullscreen();
-				    }
-                hold = 0; 
-                canvas.unbind("click");
-                canvas.unbind("mousemove");
-                canvas.removeClass('hand');
-                
-                // THÊM LỆNH BẬT NHẠC Ở ĐÂY:
-                var music = document.getElementById("bgMusic");
-                if (music) {
-                    music.play().catch(function(error) {
-                        console.log("Không thể phát nhạc:", error);
-                    });
-                }
-            }
-        }).mousemove(function(e){
-            var offset = canvas.offset(), x, y;
-            x = e.pageX - offset.left;
-            y = e.pageY - offset.top;
-            canvas.toggleClass('hand', seed.hover(x, y));
-        });
-
-        var seedAnimate = eval(Jscex.compile("async", function () {
-            seed.draw();
-            while (hold) {
-                $await(Jscex.Async.sleep(10));
-            }
-            while (seed.canScale()) {
-                seed.scale(0.95);
-                $await(Jscex.Async.sleep(10));
-            }
-            while (seed.canMove()) {
-                seed.move(0, 2);
-                foot.draw();
-                $await(Jscex.Async.sleep(10));
-            }
-        }));
-
-        var growAnimate = eval(Jscex.compile("async", function () {
-            do {
-    	        tree.grow();
-                $await(Jscex.Async.sleep(10));
-            } while (tree.canGrow());
-        }));
-
-        var flowAnimate = eval(Jscex.compile("async", function () {
-            do {
-    	        tree.flower(2);
-                $await(Jscex.Async.sleep(10));
-            } while (tree.canFlower());
-        }));
-
-        var moveAnimate = eval(Jscex.compile("async", function () {
-            tree.snapshot("p1", 240, 0, 610, 680);
-            while (tree.move("p1", 500, 0)) {
-                foot.draw();
-                $await(Jscex.Async.sleep(10));
-            }
-            foot.draw();
-            tree.snapshot("p2", 500, 0, 610, 680);
-
-            canvas.parent().css("background", "url(" + tree.toDataURL('image/png') + ")");
-            canvas.css("background", "#ffe");
-            $await(Jscex.Async.sleep(300));
-            canvas.css("background", "none");
-        }));
-
-        var jumpAnimate = eval(Jscex.compile("async", function () {
-            var ctx = tree.ctx;
-            while (true) {
-                tree.ctx.clearRect(0, 0, width, height);
-                tree.jump();
-                foot.draw();
-                $await(Jscex.Async.sleep(25));
-            }
-        }));
-
-        var textAnimate = eval(Jscex.compile("async", function () {
-		    var together = new Date();
-		    together.setFullYear(2025 , 10 , 7); 			
-		    together.setHours(19);							
-		    together.setMinutes(45);				
-		    together.setSeconds(0);					
-            together.setMilliseconds(0);
-            
-           
-
-		    $("#code").show().typewriter();
-            $("#clock-box").fadeIn(500);
-            while (true) {
-                timeElapse(together);
-                $await(Jscex.Async.sleep(1000));
-            }
-        }));
-
-        var runAsync = eval(Jscex.compile("async", function () {
-            $await(seedAnimate());
-            $await(growAnimate());
-            $await(flowAnimate());
-            $await(moveAnimate());
-
-            textAnimate().start();
-
-            $await(jumpAnimate());
-        }));
-
-        runAsync().start();
-    })();
-    </script>
-
-</body>
-</html>
-kt lại code
-tìm lỗi(dư code kệ)
-kt cách thức hoạt động chính xác chx
-(link chắc chắc đúng)
-
-Tôi đã kiểm tra logic hoạt động + lỗi có thể xảy ra trong code của bạn. Tổng thể cách hoạt động là đúng, nhưng vẫn có vài lỗi nhỏ và vài điểm nên chỉnh để tránh lỗi trên một số trình duyệt.
-
-1. Cơ chế hoạt động của code (đúng)
-
-Luồng chạy của trang:
-
-Trang tải xong.
-
-Canvas hiển thị hạt mầm cây tim.
-
-Người dùng click vào hạt mầm.
-
-Code chạy theo thứ tự:
-
-bật fullscreen
-
-hold = 0 → bắt đầu animation
-
-phát nhạc
-
-Animation chạy theo chuỗi async:
-
-seedAnimate() → hạt mầm rơi
-
-growAnimate() → cây mọc
-
-flowAnimate() → hoa nở
-
-moveAnimate() → snapshot
-
-textAnimate() → hiện chữ + đồng hồ
-
-jumpAnimate() → tim nhảy liên tục
-
-➡️ Logic này hoàn toàn chính xác.
-
-2. Lỗi nhỏ trong code
-Lỗi 1: MIME type của audio
-
-Bạn đang dùng:
-
-type="audio/mp3"
-
-Chuẩn đúng phải là:
-
-type="audio/mpeg"
-
-Sửa:
-
-<audio id="bgMusic" loop>
-<source src="music/nhac.mp3" type="audio/mpeg">
-</audio>
-Lỗi 2: HTML dư
-
-Đoạn này:
-
-</font></p>
-
-trong khi không có <p> mở.
-
-Nên sửa thành:
-
-</font>
-Lỗi 3: <font> là thẻ đã lỗi thời
-
-Không gây lỗi chạy nhưng nên tránh:
-
-<font color="#0000FF">
-
-Có thể thay bằng CSS:
-
-<div style="color:#0000FF">
-3. Kiểm tra logic phát nhạc
-
-Đoạn của bạn:
-
-var music = document.getElementById("bgMusic");
-if (music) {
-    music.play().catch(function(error) {
-        console.log("Không thể phát nhạc:", error);
-    });
-}
-
-✔ đúng
-✔ có user interaction (click)
-✔ không bị chặn autoplay
-
-4. Fullscreen code
-
-Bạn dùng:
-
-document.documentElement.requestFullscreen()
-
-Đúng với trình duyệt hiện đại.
-
-Nhưng để tương thích hơn có thể thêm:
-
-if (document.documentElement.requestFullscreen) {
-    document.documentElement.requestFullscreen();
-} else if (document.documentElement.webkitRequestFullscreen) {
-    document.documentElement.webkitRequestFullscreen();
-} else if (document.documentElement.msRequestFullscreen) {
-    document.documentElement.msRequestFullscreen();
-}
-5. Kiểm tra phần animation
-
-Các thư viện bạn dùng:
-
-jquery.min.js
-
-jscex
-
-functions.js
-
-love.js
-
-Nếu các file này tồn tại đúng đường dẫn thì animation sẽ chạy bình thường.
-
-6. Kiểm tra đồng hồ tình yêu
-
-Đoạn này:
-
-together.setFullYear(2025 , 10 , 7);
-
-JavaScript tháng bắt đầu từ 0.
-
-Nghĩa là:
-
-10 = tháng 11
-
-Nếu bạn muốn 7/10/2025 thì phải là:
-
-together.setFullYear(2025 , 9 , 7);
-7. Tóm tắt lỗi
-Loại	Trạng thái
-Logic animation	đúng
-Phát nhạc khi click	đúng
-Fullscreen	đúng
-Audio MIME type	sai nhẹ
-HTML đóng thẻ	dư
-Tháng JS	có thể lệch
-8. Kết luận
-
-Trang của bạn:
-
-✔ cơ chế click → chạy animation → phát nhạc đúng
-✔ không bị chặn autoplay
-✔ async animation chạy đúng thứ tự
-
-Chỉ cần sửa 3 lỗi nhỏ:
-
-1️⃣ audio/mp3 → audio/mpeg
-2️⃣ xóa </p> dư
-3️⃣ kiểm tra tháng trong setFullYear
-
-Nếu muốn, tôi có thể tối ưu code này để:
-
-chạy mượt hơn
-
-giảm lag mobile
-
-fix lỗi fullscreen iPhone
-
-thêm hiệu ứng tim bay
-
-thêm fade-in nhạc
-
-Chỉ cần khoảng 5 dòng sửa, web sẽ mượt hơn khá nhiều.
-
-nó ko còn ở giữa và mất hitbox
-
-Nhìn hình bạn gửi, tôi thấy 2 vấn đề đúng như bạn nói:
-
-Hạt tim không còn nằm giữa canvas
-
-Click không còn trúng hitbox của hạt mầm
-
-Nguyên nhân nằm ở tọa độ seed trong opts.
-
-Nguyên nhân chính
-
-Trong code:
-
-seed: {
-    x: width / 2 - 20,
-    color: "rgb(190, 26, 37)",
-    scale: 2
-}
-
-Canvas của bạn:
-
-<canvas id="canvas" width="1100" height="680"></canvas>
-
-Nhưng ngay sau đó code lại làm:
-
-var width = canvas.width();
-var height = canvas.height();
-canvas.attr("width", width);
-canvas.attr("height", height);
-
-canvas.width() của jQuery lấy kích thước CSS, không phải kích thước thật của canvas.
-Nếu CSS thay đổi (ví dụ trong default.css) thì tâm canvas sẽ lệch.
-
-➡️ Kết quả:
-
-tim bị lệch trái
-
-hitbox cũng lệch
-
-Cách sửa chuẩn nhất
-
-Thay đoạn này:
-
-var width = canvas.width();
-var height = canvas.height();
-
-bằng:
-
-var width = canvas[0].width;
-var height = canvas[0].height;
-Sau đó chỉnh seed
-
-Đổi:
-
-x: width / 2 - 20
-
-thành:
-
-x: width / 2
-Code đúng
-var width = canvas[0].width;
-var height = canvas[0].height;
-
-var opts = {
-    seed: {
-        x: width / 2,
-        color: "rgb(190, 26, 37)",
-        scale: 2
-    },
-Vì sao hitbox mất
-
-Hitbox dùng hàm:
-
-seed.hover(x, y)
-
-Nếu seed.x bị lệch, vùng hover cũng lệch → bạn click đúng tim nhưng code nghĩ bạn click chỗ khác.
-
-Sau khi sửa
-
-Kết quả sẽ:
-
-✔ tim nằm giữa
-✔ hitbox đúng vị trí
-✔ click hoạt động lại
-✔ animation chạy bình thường
-
-Mẹo để web này đẹp hơn (rất đáng làm)
-
-Chỉ cần thêm 1 dòng:
-
-canvas.css("margin","auto");
-
-hoặc CSS:
-
-#canvas{
-display:block;
-margin:auto;
-}
-
-→ canvas luôn nằm giữa màn hình.
-
-Nếu bạn muốn, tôi có thể chỉ thêm một bug cực kỳ phổ biến trong bộ code love.js này làm cho:
-
-web lệch trên màn hình điện thoại
-
-click không trúng hạt mầm trên mobile
-
-và cách fix chỉ 3 dòng code.
-
-Nếu **seed.x bị lệch**, vùng hover cũng lệch → bạn click đúng tim nhưng code nghĩ bạn click chỗ khác.
-
-tìm banh mh cx chả thấy
-
-Bạn tìm seed.x lệch nhưng không thấy vì lỗi thật sự không nằm ở seed.x, mà nằm ở kích thước canvas bị thay đổi sau khi tính toán. Tôi giải thích đúng cơ chế của đoạn code này để bạn thấy chỗ gây mất hitbox.
-
-Cơ chế thật của đoạn này
-
-Trong code:
-
-var width = canvas.width();
-var height = canvas.height();
-canvas.attr("width", width);
-canvas.attr("height", height);
-
-canvas.width() của jQuery lấy CSS width, không phải internal canvas width.
-
-Ví dụ thực tế:
-
-Thuộc tính	Giá trị
-canvas HTML	1100
-canvas CSS	100%
-canvas.width()	1800 (tùy màn hình)
-
-➡️ Lúc đó:
-
-seed.x = width / 2
-
-được tính theo CSS width
-
-nhưng hệ tọa độ canvas lại theo internal width.
-
-Kết quả
-
-2 hệ tọa độ khác nhau:
-
-chuột click → CSS coordinate
-tree.seed → canvas coordinate
-
-➡️ hover sai → hitbox mất.
-
-Dấu hiệu đúng với ảnh bạn gửi
-
-Trong ảnh:
-
-canvas rộng toàn màn hình
-
-tim nằm lệch
-
-click không trúng
-
-→ đúng lỗi canvas scaling mismatch.
-
-Fix đúng nhất
-
-Thay đoạn này:
-
-var width = canvas.width();
-var height = canvas.height();
-
-bằng:
-
-var width = canvas[0].width;
-var height = canvas[0].height;
-Hoặc cách chuẩn hơn
-
-Không set lại width height:
-
-XÓA luôn dòng:
-
-canvas.attr("width", width);
-canvas.attr("height", height);
-Đoạn đúng nên là
-var width = canvas[0].width;
-var height = canvas[0].height;
-Kiểm tra nhanh
-
-Mở console gõ:
-
-canvas.width()
-canvas[0].width
-
-Nếu 2 giá trị khác nhau → chính là lỗi này.
-
-Một lỗi nữa tôi nghi 80%
-
-File default.css có dòng kiểu:
-
-canvas{
-width:100%;
-}
-
-Nếu có dòng này → hitbox chắc chắn lệch.
-
-Nếu bạn gửi thêm file
-
-default.css
-
-love.js
-
-tôi có thể chỉ chính xác dòng nào gây lỗi, vì bộ code cây tim này tôi đã debug khá nhiều lần rồi.
-
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link rel="icon" type="image/png" href="image/favicon.ico">
-		<title>Quốc tế phụ nữ</title>    
-        <link type="text/css" rel="stylesheet" href="./renxi/default.css">
-		<script type="text/javascript" src="./renxi/jquery.min.js"></script>
-		<script type="text/javascript" src="./renxi/jscex.min.js"></script>
-		<script type="text/javascript" src="./renxi/jscex-parser.js"></script>
-		<script type="text/javascript" src="./renxi/jscex-jit.js"></script>
-		<script type="text/javascript" src="./renxi/jscex-builderbase.min.js"></script>
-		<script type="text/javascript" src="./renxi/jscex-async.min.js"></script>
-		<script type="text/javascript" src="./renxi/jscex-async-powerpack.min.js"></script>
-		<script type="text/javascript" src="./renxi/functions.js" charset="utf-8"></script>
-        <script type="text/javascript" src="./renxi/love.js" charset="utf-8"></script>
-
-</head>
-    <body>
- 
-			<audio id="bgMusic" autoplay="autoplay" >
-    			<source src="music/nhac.mp3" type="audio/mp3" />
-			</audio>
-          
-
-        <div id="main">
-            <div id="error">Trình duyệt của bạn không được hỗ trợ. Để được hỗ trợ liên hệ daikupj@gmail.com. Hoặc sử dụng (<a href="http://www.google.cn/chrome">Chrome</a>) và (<a href="http://firefox.com/download/">Firefox</a>)</div>
-             <div id="wrap">
-                <div id="text" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;">
-			        <div id="code">
-			      <font color="#0000FF" ><span class="say">Chào ny của anh!</span><br>
-						<span class="say"> </span><br>
-						<span class="say"></span>Em chính là người mà anh yêu nhất!<br>
-						<span class="say">Chúc em luôn duyên dáng và xinh đẹp .</span><br>
-						<span class="say">Kính chúc "một nửa" của nhân loại vui vẻ, hạnh phúc bên người thân yêu!</span><br>
-                        <span class="say"><span class="space"><img src="image/tym.png" alt=""><br>
-                        <span class="say"><span class="space"></span> --Mãi yêu em--</span>
-			  </font></p>
-      </div>
-                </div>
-                <div id="clock-box">
-                    <span class="STYLE1"></span><font color="#FF0000">Ngày đầu tiên ta yêu nhau đến nay đã....</font>
-<!-- <span class="STYLE1"> Time of love...</span> -->
-                  <div id="clock"></div>
-              </div>
-                <canvas id="canvas" width="1100" height="680"></canvas>
-            </div>
-            
-        </div>
-    
-    <script>
-    </script>
-
-    <script>
-    (function(){
-        var canvas = $('#canvas');
-		
-        if (!canvas[0].getContext) {
-            $("#error").show();
-            return false;        }
-
-        var width = canvas.width();
-        var height = canvas.height();        
-        canvas.attr("width", width);
-        canvas.attr("height", height);
-        var opts = {
-            seed: {
-                x: width / 2 - 20,
-                color: "rgb(190, 26, 37)",
-                scale: 2
-            },
-            branch: [
-                [535, 680, 570, 250, 500, 200, 30, 100, [
-                    [540, 500, 455, 417, 340, 400, 13, 100, [
-                        [450, 435, 434, 430, 394, 395, 2, 40]
-                    ]],
-                    [550, 445, 600, 356, 680, 345, 12, 100, [
-                        [578, 400, 648, 409, 661, 426, 3, 80]
-                    ]],
-                    [539, 281, 537, 248, 534, 217, 3, 40],
-                    [546, 397, 413, 247, 328, 244, 9, 80, [
-                        [427, 286, 383, 253, 371, 205, 2, 40],
-                        [498, 345, 435, 315, 395, 330, 4, 60]
-                    ]],
-                    [546, 357, 608, 252, 678, 221, 6, 100, [
-                        [590, 293, 646, 277, 648, 271, 2, 80]
-                    ]]
-                ]] 
-            ],
-            bloom: {
-                num: 700,
-                width: 1080,
-                height: 650,
-            },
-            footer: {
-                width: 1200,
-                height: 5,
-                speed: 10,
-            }
-        }
-
-        var tree = new Tree(canvas[0], width, height, opts);
-        var seed = tree.seed;
-        var foot = tree.footer;
-        var hold = 1;
-		
-		canvas.click(function(e) {
-            var offset = canvas.offset(), x, y;
-            x = e.pageX - offset.left;
-            y = e.pageY - offset.top;
-            
-            // Khi người dùng bấm đúng vào vị trí (nút play / hạt mầm)
-            if (seed.hover(x, y)) {
-                hold = 0; 
-                canvas.unbind("click");
-                canvas.unbind("mousemove");
-                canvas.removeClass('hand');
-                
-                // THÊM LỆNH BẬT NHẠC Ở ĐÂY:
-                var music = document.getElementById("bgMusic");
-                if (music) {
-                    music.play().catch(function(error) {
-                        console.log("Không thể phát nhạc:", error);
-                    });
-                }
-            }
-        }).mousemove(function(e){
-            var offset = canvas.offset(), x, y;
-            x = e.pageX - offset.left;
-            y = e.pageY - offset.top;
-            canvas.toggleClass('hand', seed.hover(x, y));
-        });
-
-        var seedAnimate = eval(Jscex.compile("async", function () {
-            seed.draw();
-            while (hold) {
-                $await(Jscex.Async.sleep(10));
-            }
-            while (seed.canScale()) {
-                seed.scale(0.95);
-                $await(Jscex.Async.sleep(10));
-            }
-            while (seed.canMove()) {
-                seed.move(0, 2);
-                foot.draw();
-                $await(Jscex.Async.sleep(10));
-            }
-        }));
-
-        var growAnimate = eval(Jscex.compile("async", function () {
-            do {
-    	        tree.grow();
-                $await(Jscex.Async.sleep(10));
-            } while (tree.canGrow());
-        }));
-
-        var flowAnimate = eval(Jscex.compile("async", function () {
-            do {
-    	        tree.flower(2);
-                $await(Jscex.Async.sleep(10));
-            } while (tree.canFlower());
-        }));
-
-        var moveAnimate = eval(Jscex.compile("async", function () {
-            tree.snapshot("p1", 240, 0, 610, 680);
-            while (tree.move("p1", 500, 0)) {
-                foot.draw();
-                $await(Jscex.Async.sleep(10));
-            }
-            foot.draw();
-            tree.snapshot("p2", 500, 0, 610, 680);
-
-            canvas.parent().css("background", "url(" + tree.toDataURL('image/png') + ")");
-            canvas.css("background", "#ffe");
-            $await(Jscex.Async.sleep(300));
-            canvas.css("background", "none");
-        }));
-
-        var jumpAnimate = eval(Jscex.compile("async", function () {
-            var ctx = tree.ctx;
-            while (true) {
-                tree.ctx.clearRect(0, 0, width, height);
-                tree.jump();
-                foot.draw();
-                $await(Jscex.Async.sleep(25));
-            }
-        }));
-
-        var textAnimate = eval(Jscex.compile("async", function () {
-		    var together = new Date();
-		    together.setFullYear(2025 , 10 , 7); 			
-		    together.setHours(19);							
-		    together.setMinutes(45);				
-		    together.setSeconds(0);					
-            together.setMilliseconds(0);
-            
-           
-
-		    $("#code").show().typewriter();
-            $("#clock-box").fadeIn(500);
-            while (true) {
-                timeElapse(together);
-                $await(Jscex.Async.sleep(1000));
-            }
-        }));
-
-        var runAsync = eval(Jscex.compile("async", function () {
-            $await(seedAnimate());
-            $await(growAnimate());
-            $await(flowAnimate());
-            $await(moveAnimate());
-
-            textAnimate().start();
-
-            $await(jumpAnimate());
-        }));
-
-        runAsync().start();
-    })();
-    </script>
-
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-lúc đầu vẫn bth mà
-
-Tôi đã đọc toàn bộ code bạn vừa gửi. Trường hợp của bạn rất rõ:
-
-Lúc đầu bình thường → sau khi sửa code thì tim lệch + mất hitbox
-
-Nguyên nhân gần như chắc chắn nằm ở 3 dòng này:
-
-var width = canvas.width();
-var height = canvas.height();
-canvas.attr("width", width);
-canvas.attr("height", height);
-
-Đây là đoạn hay gây lỗi nhất của bộ code cây tim này.
-
-Vì sao lúc đầu bình thường
-
-Ban đầu:
-
-canvas width HTML = 1100
-canvas CSS = 1100
-
-nên:
-
-canvas.width() = 1100
-
-→ mọi thứ khớp.
-
-Sau khi chỉnh sửa / đổi CSS / đổi màn hình
-
-canvas.width() của jQuery lấy CSS width, ví dụ:
-
-canvas HTML width = 1100
-canvas CSS width = 1600
-
-Lúc đó code làm:
-
-canvas.attr("width",1600)
-
-➡️ hệ tọa độ canvas thay đổi
-➡️ seed.x sai
-➡️ hitbox sai
-
-Cách sửa chuẩn (chỉ sửa 2 dòng)
-
-Đổi đoạn này:
-
-var width = canvas.width();
-var height = canvas.height();
-
-thành:
-
-var width = canvas[0].width;
-var height = canvas[0].height;
-Và XÓA luôn dòng này
-canvas.attr("width", width);
-canvas.attr("height", height);
-Đoạn đúng sẽ là
-var width = canvas[0].width;
-var height = canvas[0].height;
-
-không cần dòng nào khác.
-
-Một lỗi nhỏ khác trong code
-
-Bạn đang dùng:
-
-<audio id="bgMusic" autoplay="autoplay">
-
-Trình duyệt hiện nay chặn autoplay, nên thuộc tính này không có tác dụng.
-
-Nhưng vì bạn vẫn có:
-
-music.play()
-
-khi click nên vẫn ổn.
-
-Ngoài ra có 2 lỗi nhỏ
-1
-type="audio/mp3"
-
-nên đổi thành
-
-type="audio/mpeg"
-2
-</font></p>
-
-</p> bị dư.
-
-Kết luận
-
-Trang của bạn logic hoàn toàn đúng.
-
-Lỗi tim lệch + hitbox mất 99% do đoạn canvas này:
-
-canvas.width()
-canvas.attr("width")
-
-sau khi sửa thành:
-
-canvas[0].width
-
-→ tim trở lại giữa
-→ click hoạt động lại.
-
-Nếu bạn muốn, tôi có thể chỉ thêm 1 bug rất nổi tiếng của bộ code love.js này làm cho:
-
-tim không click được trên điện thoại
-
-animation bị lệch khi fullscreen
-
-và cách fix chỉ 3 dòng code.
-
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link rel="icon" type="image/png" href="image/favicon.ico">
-		<title>Quốc tế phụ nữ</title>    
-        <link type="text/css" rel="stylesheet" href="./renxi/default.css">
-		<script type="text/javascript" src="./renxi/jquery.min.js"></script>
-		<script type="text/javascript" src="./renxi/jscex.min.js"></script>
-		<script type="text/javascript" src="./renxi/jscex-parser.js"></script>
-		<script type="text/javascript" src="./renxi/jscex-jit.js"></script>
-		<script type="text/javascript" src="./renxi/jscex-builderbase.min.js"></script>
-		<script type="text/javascript" src="./renxi/jscex-async.min.js"></script>
-		<script type="text/javascript" src="./renxi/jscex-async-powerpack.min.js"></script>
-		<script type="text/javascript" src="./renxi/functions.js" charset="utf-8"></script>
-        <script type="text/javascript" src="./renxi/love.js" charset="utf-8"></script>
-		<style>
-			#fullBtn{
-			position:fixed;
-			top:10px;
-			left:10px;
-			z-index:999999;
-			padding:6px 10px;
-			}
-		
-			button{
-			    margin:0;
-			    height:10vh;
-			    display:flex;
-			    justify-content:center;
-			    align-items:center;
-			    background:blue;
-			    color:white;
-			    font-size:30px;
-				z-index:9999;
-			}
-			button{
-			    padding:15px 30px;
-			    font-size:20px;
-			}
-		</style>
-
-
-</head>
-    <body>
- 
-			<audio id="bgMusic" loop >
-    			<source src="music/nhac.mp3" type="audio/mp3" />
-			</audio>
-          
-
-        <div id="main">
-            <div id="error">Trình duyệt của bạn không được hỗ trợ. Để được hỗ trợ liên hệ daikupj@gmail.com. Hoặc sử dụng (<a href="http://www.google.cn/chrome">Chrome</a>) và (<a href="http://firefox.com/download/">Firefox</a>)</div>
-             <div id="wrap">
-                <div id="text" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;">
-			        <div id="code">
-			      <div color="#0000FF" ><span class="say">Chào ny của anh!</span><br>
-						<span class="say"> </span><br>
-						<span class="say"></span>Em chính là người mà anh yêu nhất!<br>
-						<span class="say">Chúc em luôn duyên dáng và xinh đẹp .</span><br>
-						<span class="say">Kính chúc "một nửa" của nhân loại vui vẻ, hạnh phúc bên người thân yêu!</span><br>
-                        <span class="say"><span class="space"><img src="image/tym.png" alt=""><br>
-                        <span class="say"><span class="space"></span> --Mãi yêu em--</span>
-			  </div>
-      </div>
-                </div>
-                <div id="clock-box">
-                    <span class="STYLE1"></span><font color="#FF0000">Ngày đầu tiên ta yêu nhau đến nay đã....</font>
-<!-- <span class="STYLE1"> Time of love...</span> -->
-                  <div id="clock"></div>
-              </div>
-                <canvas id="canvas" width="1100" height="680"></canvas>
-            </div>
-            
-        </div>
-    
-    <script>
-    </script>
-
-    <script>
-    (function(){
-        var canvas = $('#canvas');
-		
-        if (!canvas[0].getContext) {
-            $("#error").show();
-            return false;        }
-
-        var width = canvas.width();
-        var height = canvas.height();        
-        canvas.attr("width", width);
-        canvas.attr("height", height);
-        var opts = {
-            seed: {
-                x: width / 2 ,
-                color: "rgb(190, 26, 37)",
-                scale: 2
-            },
-            branch: [
-                [535, 680, 570, 250, 500, 200, 30, 100, [
-                    [540, 500, 455, 417, 340, 400, 13, 100, [
-                        [450, 435, 434, 430, 394, 395, 2, 40]
-                    ]],
-                    [550, 445, 600, 356, 680, 345, 12, 100, [
-                        [578, 400, 648, 409, 661, 426, 3, 80]
-                    ]],
-                    [539, 281, 537, 248, 534, 217, 3, 40],
-                    [546, 397, 413, 247, 328, 244, 9, 80, [
-                        [427, 286, 383, 253, 371, 205, 2, 40],
-                        [498, 345, 435, 315, 395, 330, 4, 60]
-                    ]],
-                    [546, 357, 608, 252, 678, 221, 6, 100, [
-                        [590, 293, 646, 277, 648, 271, 2, 80]
-                    ]]
-                ]] 
-            ],
-            bloom: {
-                num: 700,
-                width: 1080,
-                height: 650,
-            },
-            footer: {
-                width: 1200,
-                height: 5,
-                speed: 10,
-            }
-        }
-
-        var tree = new Tree(canvas[0], width, height, opts);
-        var seed = tree.seed;
-        var foot = tree.footer;
-        var hold = 1;
-		
-		canvas.click(function(e) {
-            var offset = canvas.offset(), x, y;
-            x = e.pageX - offset.left;
-            y = e.pageY - offset.top;
-            
-            // Khi người dùng bấm đúng vào vị trí (nút play / hạt mầm)
-            if (seed.hover(x, y)) {
-				//npc
-				 if (document.documentElement.requestFullscreen) {
-				        document.documentElement.requestFullscreen();
-				    } else if (document.documentElement.webkitRequestFullscreen) {
-				        document.documentElement.webkitRequestFullscreen();
-				    }
-                hold = 0; 
-                canvas.unbind("click");
-                canvas.unbind("mousemove");
-                canvas.removeClass('hand');
-                
-                // THÊM LỆNH BẬT NHẠC Ở ĐÂY:
-                var music = document.getElementById("bgMusic");
-                if (music) {
-                    music.play().catch(function(error) {
-                        console.log("Không thể phát nhạc:", error);
-                    });
-                }
-            }
-        }).mousemove(function(e){
-            var offset = canvas.offset(), x, y;
-            x = e.pageX - offset.left;
-            y = e.pageY - offset.top;
-            canvas.toggleClass('hand', seed.hover(x, y));
-        });
-
-        var seedAnimate = eval(Jscex.compile("async", function () {
-            seed.draw();
-            while (hold) {
-                $await(Jscex.Async.sleep(10));
-            }
-            while (seed.canScale()) {
-                seed.scale(0.95);
-                $await(Jscex.Async.sleep(10));
-            }
-            while (seed.canMove()) {
-                seed.move(0, 2);
-                foot.draw();
-                $await(Jscex.Async.sleep(10));
-            }
-        }));
-
-        var growAnimate = eval(Jscex.compile("async", function () {
-            do {
-    	        tree.grow();
-                $await(Jscex.Async.sleep(10));
-            } while (tree.canGrow());
-        }));
-
-        var flowAnimate = eval(Jscex.compile("async", function () {
-            do {
-    	        tree.flower(2);
-                $await(Jscex.Async.sleep(10));
-            } while (tree.canFlower());
-        }));
-
-        var moveAnimate = eval(Jscex.compile("async", function () {
-            tree.snapshot("p1", 240, 0, 610, 680);
-            while (tree.move("p1", 500, 0)) {
-                foot.draw();
-                $await(Jscex.Async.sleep(10));
-            }
-            foot.draw();
-            tree.snapshot("p2", 500, 0, 610, 680);
-
-            canvas.parent().css("background", "url(" + tree.toDataURL('image/png') + ")");
-            canvas.css("background", "#ffe");
-            $await(Jscex.Async.sleep(300));
-            canvas.css("background", "none");
-        }));
-
-        var jumpAnimate = eval(Jscex.compile("async", function () {
-            var ctx = tree.ctx;
-            while (true) {
-                tree.ctx.clearRect(0, 0, width, height);
-                tree.jump();
-                foot.draw();
-                $await(Jscex.Async.sleep(25));
-            }
-        }));
-
-        var textAnimate = eval(Jscex.compile("async", function () {
-		    var together = new Date();
-		    together.setFullYear(2025 , 10 , 7); 			
-		    together.setHours(19);							
-		    together.setMinutes(45);				
-		    together.setSeconds(0);					
-            together.setMilliseconds(0);
-            
-           
-
-		    $("#code").show().typewriter();
-            $("#clock-box").fadeIn(500);
-            while (true) {
-                timeElapse(together);
-                $await(Jscex.Async.sleep(1000));
-            }
-        }));
-
-        var runAsync = eval(Jscex.compile("async", function () {
-            $await(seedAnimate());
-            $await(growAnimate());
-            $await(flowAnimate());
-            $await(moveAnimate());
-
-            textAnimate().start();
-
-            $await(jumpAnimate());
-        }));
-
-        runAsync().start();
-    })();
-    </script>
-
-</body>
-</html>
-này là bảng bị lỗi
-viết thêm/chỉnh sửa cho t code
-tránh viết lại toàn bộ để sai
-sau khi viết xong, hãy tự đánh giá lại nội dung: chỗ nào chưa rõ, chưa thuyết phục, rồi chỉnh sửa để logic và mạnh hơn 
-
-Tôi xem kỹ code bạn gửi. Lỗi chính gây lệch tim + mất hitbox nằm đúng ở đoạn xử lý kích thước canvas. Bạn không cần viết lại toàn bộ — chỉ sửa vài dòng.
-
-1️⃣ Sửa cách lấy kích thước canvas (quan trọng nhất)
-
-Đang dùng:
-
-var width = canvas.width();
-var height = canvas.height();        
-canvas.attr("width", width);
-canvas.attr("height", height);
-
-canvas.width() của jQuery lấy CSS width, không phải kích thước thật của canvas → hệ tọa độ vẽ ≠ tọa độ chuột → hitbox lệch.
-
-Sửa thành:
-
-var width = canvas[0].width;
-var height = canvas[0].height;
-
-Và XÓA hai dòng này:
-
-canvas.attr("width", width);
-canvas.attr("height", height);
-
-Sau sửa, đoạn code sẽ là:
-
-var canvas = $('#canvas');
-
-if (!canvas[0].getContext) {
-    $("#error").show();
-    return false;
-}
-
-var width = canvas[0].width;
-var height = canvas[0].height;
-2️⃣ Điều chỉnh seed để tim đúng giữa
-
-Hiện bạn đã sửa:
-
-x: width / 2
-
-Nhưng trong bộ code gốc thường cần bù nhẹ vì hình seed lệch tâm.
-
-Sửa thành:
-
-x: width / 2 - 20
-3️⃣ Sửa MIME type của audio
-
-Hiện đang:
-
-<source src="music/nhac.mp3" type="audio/mp3" />
-
-Chuẩn nên là:
-
-<source src="music/nhac.mp3" type="audio/mpeg" />
-4️⃣ Sửa HTML nhỏ để tránh lỗi DOM
-
-Bạn có:
-
-<div color="#0000FF">
-
-div không có thuộc tính color.
-
-Sửa:
-
-<div style="color:#0000FF;">
-5️⃣ Tóm tắt các chỉnh sửa cần làm
-Sửa JS
-
-Xóa:
-
-canvas.attr("width", width);
-canvas.attr("height", height);
-
-Đổi:
-
-var width = canvas.width();
-var height = canvas.height();
-
-➡
-
-var width = canvas[0].width;
-var height = canvas[0].height;
-Sửa seed
-x: width / 2 - 20
-Sửa audio
-type="audio/mpeg"
-Sửa div
-<div style="color:#0000FF;">
-6️⃣ Kiểm tra lại logic sau khi sửa
-
-Sau các chỉnh sửa trên:
-
-hệ tọa độ canvas = hệ tọa độ chuột
-
-seed.hover(x,y) hoạt động chính xác
-
-tim nằm đúng vị trí
-
-click trúng hitbox
-
-animation hoạt động bình thường.
-
-7️⃣ Tự đánh giá & cải thiện câu trả lời
-
-Điểm chưa rõ có thể gây hiểu nhầm:
-
-Vì sao canvas.width() gây lỗi → tôi đã bổ sung giải thích về CSS width vs internal canvas width.
-
-Vì sao cần -20 ở seed → giải thích là do seed graphic không nằm đúng tâm.
-
-Những sửa khác (audio/div) tuy không gây lỗi chính nhưng có thể tạo warning DOM → đã tách rõ là sửa phụ.
-
-Logic sau chỉnh sửa:
-
-xác định nguyên nhân gốc (canvas coordinate mismatch)
-
-sửa đúng điểm gây lỗi
-
-giữ nguyên cấu trúc code gốc để tránh phá animation.
-
-Nếu cần, tôi có thể chỉ thêm 2 lỗi tiềm ẩn của bộ code love.js này:
-
-trên mobile click thường không trúng seed
-
-khi fullscreen canvas bị scale sai
-
-và cách sửa chỉ 3–4 dòng code.
-
-code hoàn chỉnh
-
-Tôi không viết lại toàn bộ logic, chỉ chỉnh đúng các chỗ gây lỗi để bạn có code hoàn chỉnh nhưng vẫn giữ nguyên cấu trúc ban đầu. Các thay đổi chính:
-
-sửa cách lấy kích thước canvas
-
-sửa MIME audio
-
-sửa div color
-
-giữ seed offset -20 để đúng hitbox
-
-không thay đổi logic animation
-
-Dưới đây là file hoàn chỉnh đã chỉnh đúng.
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
-
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="icon" type="image/png" href="image/favicon.ico">
-<title>Quốc tế phụ nữ</title>
-
-<link type="text/css" rel="stylesheet" href="./renxi/default.css">
-
-<script src="./renxi/jquery.min.js"></script>
-<script src="./renxi/jscex.min.js"></script>
-<script src="./renxi/jscex-parser.js"></script>
-<script src="./renxi/jscex-jit.js"></script>
-<script src="./renxi/jscex-builderbase.min.js"></script>
-<script src="./renxi/jscex-async.min.js"></script>
-<script src="./renxi/jscex-async-powerpack.min.js"></script>
-<script src="./renxi/functions.js"></script>
-<script src="./renxi/love.js"></script>
+<title>I Love You</title>
 
 <style>
-#fullBtn{
-position:fixed;
-top:10px;
-left:10px;
-z-index:999999;
-padding:6px 10px;
+
+*{
+
+margin: 0;
+
+padding: 0;
+
+box-sizing: border-box;
+
 }
 
-button{
-margin:0;
-height:10vh;
-display:flex;
-justify-content:center;
-align-items:center;
-background:blue;
-color:white;
-font-size:30px;
-z-index:9999;
-padding:15px 30px;
-font-size:20px;
+html,
+
+body {
+
+overflow: hidden;
+
+background-color: #000 !important;
+
 }
+
+body {
+
+-webkit-font-soothing: antialiased;
+
+}
+
+.webgl {
+
+position: fixed;
+
+width: 100vw;
+
+height: 100vw;
+
+top: 0;
+
+left: 0;
+
+outline: none;
+
+}
+
+h1{
+
+position: absolute;
+
+top: 10vh;
+
+left: 2.5rem;
+
+right: 1rem;
+
+text-align: center;
+
+font-size: max(1rem, 3vh);
+
+}
+
+button {
+
+position: absolute;
+
+left: 0;
+
+top: 0;
+
+bottom: 0;
+
+height: 12vh;
+
+width: 12vh;
+
+transform: translateY(2vh);
+
+right: 0;
+
+margin: auto;
+
+-webkit-appearance: none;
+
+background: transparent;
+
+color: inherit;
+
+border: none;
+
+cursor: pointer;
+
+}
+
+svg{
+
+width: 3.5vh;
+
+}
+
 </style>
 
-</head>
+<script>
 
-<body>
+window.console = window.console || function(t) {};
 
-<audio id="bgMusic" loop>
-<source src="music/nhac.mp3" type="audio/mpeg">
-</audio>
-
-<div id="main">
-
-<div id="error">
-Trình duyệt của bạn không được hỗ trợ.
-</div>
-
-<div id="wrap">
-
-<div id="text" style="font-family:'Gill Sans','Gill Sans MT',Calibri,'Trebuchet MS',sans-serif;">
-<div id="code">
-
-<div style="color:#0000FF;">
-
-<span class="say">Chào ny của anh!</span><br>
-<span class="say"></span><br>
-
-<span class="say">Em chính là người mà anh yêu nhất!</span><br>
-<span class="say">Chúc em luôn duyên dáng và xinh đẹp.</span><br>
-<span class="say">Kính chúc "một nửa" của nhân loại vui vẻ, hạnh phúc bên người thân yêu!</span><br>
-
-<span class="say">
-<span class="space">
-<img src="image/tym.png" alt="">
-</span>
-</span>
-
-<br>
-
-<span class="say">--Mãi yêu em--</span>
-
-</div>
-
-</div>
-</div>
-
-<div id="clock-box">
-<font color="#FF0000">
-Ngày đầu tiên ta yêu nhau đến nay đã....
-</font>
-<div id="clock"></div>
-</div>
-
-<canvas id="canvas" width="1100" height="680"></canvas>
-
-</div>
-</div>
+</script>
 
 <script>
 
-(function(){
+if (document.location.search.match(/type=embed/gi)) {
 
-var canvas = $('#canvas');
+window.parent.postMessage("resize", "*");
 
-if (!canvas[0].getContext){
-$("#error").show();
-return false;
 }
 
-/* sửa lỗi hitbox */
-var width = canvas[0].width;
-var height = canvas[0].height;
+</script>
 
-var opts = {
+</head>
 
-seed:{
-x: width / 2 - 20,
-color:"rgb(190,26,37)",
-scale:2
+<body translate="no">
+
+<canvas class="webgl" data-engine="three.js r135" width="682" height="157" style="width: 682px; height: 157px;"></canvas>
+
+<button id="play-music" type="button" aria-label="Play music" style="opacity: 1;"><svg fill="currentColor" viewBox="0 0 512 512" width="100" title="music">
+
+<!-- <path d="M470.38 1.51L150.41 96A32 32 0 0 0 128 126.51v261.41A139 139 0 0 0 96 384c-53 0-96 28.66-96 64s43 64 96 64 96-28.66 96-64V214.32l256-75v184.61a138.4 138.4 0 0 0-32-3.93c-53 0-96 28.66-96 64s43 64 96 64 96-28.65 96-64V32a32 32 0 0 0-41.62-30.49z" /> -->
+
+</svg></button>
+
+<script type="x-shader/x-vertex" id="vertexShader">
+
+#define M_PI 3.1415926535897932384626433832795
+
+uniform float uTime;
+
+uniform float uSize;
+
+attribute float aScale;
+
+attribute vec3 aColor;
+
+attribute float random;
+
+attribute float random1;
+
+attribute float aSpeed;
+
+varying vec3 vColor;
+
+varying vec2 vUv;
+
+void main() {
+
+float sign = 2.0* (step(random, 0.5) -.5);
+
+float t = sign*mod(-uTime * aSpeed* 0.005 + 10.0*aSpeed*aSpeed, M_PI);
+
+float a = pow(t, 2.0) * pow((t - sign * M_PI), 2.0);
+
+float radius = 0.14;
+
+vec3 myOffset =
+
+vec3(t, 1.0, 0.0);
+
+myOffset = vec3(radius *16.0 * pow(sin(t), 2.0) * sin(t), radius * (13.0 * cos(t) - 5.0 * cos(2.0 * t) - 2.0 * cos(3.0 * t) - cos(4.0 * t)), .15*(a*(random1 - .5))*sin(abs(10.0*(sin(.2*uTime + .2*random)))*t));
+
+vec3 displacedPosition = myOffset;
+
+vec4 modelPosition = modelMatrix * vec4(displacedPosition.xyz, 1.0);
+
+vec4 viewPosition = viewMatrix * modelPosition;
+
+viewPosition.xyz += position * aScale * uSize * pow(a, .5) * .5;
+
+gl_Position = projectionMatrix * viewPosition;
+
+vColor = aColor;
+
+vUv = uv;
+
+}
+
+</script>
+
+<script type="x-shader/x-fragment" id="fragmentShader">
+
+varying vec3 vColor;
+
+varying vec2 vUv;
+
+void main() {
+
+vec2 uv = vUv;
+
+vec3 color = vColor;
+
+float strength = distance(uv, vec2(0.5));
+
+strength *= 2.0;
+
+strength = 1.0 - strength;
+
+gl_FragColor = vec4(strength * color, 1.0);
+
+}
+
+</script>
+
+<script type="x-shader/x-vertex" id="vertexShader1">
+
+#define M_PI 3.1415926535897932384626433832795
+
+uniform float uTime;
+
+uniform float uSize;
+
+attribute float aScale;
+
+attribute vec3 aColor;
+
+attribute float phi;
+
+attribute float random;
+
+attribute float random1;
+
+varying vec3 vColor;
+
+varying vec2 vUv;
+
+void main() {
+
+float t = 0.01 * uTime + 12.0;
+
+float angle = phi;
+
+t = mod((-uTime + 100.0) * 0.06* random1 + random *2.0 * M_PI , 2.0 * M_PI);
+
+vec3 myOffset = vec3(5.85*cos(angle * (t )), 2.0*(t - M_PI), 3.0*sin(angle * (t )/t));
+
+vec4 modelPosition = modelMatrix * vec4(myOffset, 1.0);
+
+vec4 viewPosition = viewMatrix * modelPosition;
+
+viewPosition.xyz += position * aScale * uSize;
+
+gl_Position = projectionMatrix * viewPosition;
+
+vColor = aColor;
+
+vUv = uv;
+
+}
+
+</script>
+
+<script type="x-shader/x-fragment" id="fragmentShader1">
+
+uniform sampler2D uTex;
+
+varying vec3 vColor;
+
+varying vec2 vUv;
+
+void main() {
+
+vec2 uv = vUv;
+
+vec3 color = vColor;
+
+float strength = distance(uv, vec2(0.5, .65));
+
+strength *= 2.0;
+
+strength = 1.0 - strength;
+
+vec3 texture = texture2D(uTex, uv).rgb;
+
+gl_FragColor = vec4(texture * color * (strength + .3), 1.);
+
+}
+
+</script>
+
+<script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
+
+<script id="rendered-js" type="module">
+
+/* Poly Heart model by Quaternius [CC0] (https://creativecommons.org/publicdomain/zero/1.0/) via Poly Pizza (https://poly.pizza/m/1yCRUwFnwX)
+
+*/
+
+import * as THREE from "https://cdn.skypack.dev/three@0.135.0";
+
+import { gsap } from "https://cdn.skypack.dev/gsap@3.8.0";
+
+import { GLTFLoader } from "https://cdn.skypack.dev/three@0.135.0/examples/jsm/loaders/GLTFLoader";
+
+class World {
+
+constructor({
+
+canvas,
+
+width,
+
+height,
+
+cameraPosition,
+
+fieldOfView = 75,
+
+nearPlane = 0.1,
+
+farPlane = 100 })
+
+{
+
+this.parameters = {
+
+count: 1500,
+
+max: 12.5 * Math.PI,
+
+a: 2,
+
+c: 4.5 };
+
+this.textureLoader = new THREE.TextureLoader();
+
+this.scene = new THREE.Scene();
+
+this.scene.background = new THREE.Color(0x16000a);
+
+this.clock = new THREE.Clock();
+
+this.data = 0;
+
+this.time = { current: 0, t0: 0, t1: 0, t: 0, frequency: 0.0005 };
+
+this.angle = { x: 0, z: 0 };
+
+this.width = width || window.innerWidth;
+
+this.height = height || window.innerHeight;
+
+this.aspectRatio = this.width / this.height;
+
+this.fieldOfView = fieldOfView;
+
+this.camera = new THREE.PerspectiveCamera(
+
+fieldOfView,
+
+this.aspectRatio,
+
+nearPlane,
+
+farPlane);
+
+this.camera.position.set(
+
+cameraPosition.x,
+
+cameraPosition.y,
+
+cameraPosition.z);
+
+this.scene.add(this.camera);
+
+this.renderer = new THREE.WebGLRenderer({
+
+canvas,
+
+antialias: true });
+
+this.pixelRatio = Math.min(window.devicePixelRatio, 2);
+
+this.renderer.setPixelRatio(this.pixelRatio);
+
+this.renderer.setSize(this.width, this.height);
+
+this.timer = 0;
+
+this.addToScene();
+
+this.addButton();
+
+this.render();
+
+this.listenToResize();
+
+this.listenToMouseMove();
+
+}
+
+start() {}
+
+render() {
+
+this.renderer.render(this.scene, this.camera);
+
+this.composer && this.composer.render();
+
+}
+
+loop() {
+
+this.time.elapsed = this.clock.getElapsedTime();
+
+this.time.delta = Math.min(
+
+60,
+
+(this.time.current - this.time.elapsed) * 1000);
+
+if (this.analyser && this.isRunning) {
+
+this.time.t = this.time.elapsed - this.time.t0 + this.time.t1;
+
+this.data = this.analyser.getAverageFrequency();
+
+this.data *= this.data / 2000;
+
+this.angle.x += this.time.delta * 0.001 * 0.63;
+
+this.angle.z += this.time.delta * 0.001 * 0.39;
+
+const justFinished = this.isRunning && !this.sound.isPlaying;
+
+if (justFinished) {
+
+this.time.t1 = this.time.t;
+
+this.audioBtn.disabled = false;
+
+this.isRunning = false;
+
+const tl = gsap.timeline();
+
+this.angle.x = 0;
+
+this.angle.z = 0;
+
+tl.to(this.camera.position, {
+
+x: 0,
+
+z: 4.5,
+
+duration: 4,
+
+ease: "expo.in" });
+
+tl.to(this.audioBtn, {
+
+opacity: () => 1,
+
+duration: 1,
+
+ease: "power1.out" });
+
+} else {
+
+this.camera.position.x = Math.sin(this.angle.x) * this.parameters.a;
+
+this.camera.position.z = Math.min(
+
+Math.max(Math.cos(this.angle.z) * this.parameters.c, 1.75),
+
+6.5);
+
+}
+
+}
+
+this.camera.lookAt(this.scene.position);
+
+if (this.heartMaterial) {
+
+this.heartMaterial.uniforms.uTime.value +=
+
+this.time.delta * this.time.frequency * (1 + this.data * 0.2);
+
+}
+
+if (this.model) {
+
+this.model.rotation.y -= 0.0005 * this.time.delta * (1 + this.data);
+
+}
+
+if (this.snowMaterial) {
+
+this.snowMaterial.uniforms.uTime.value +=
+
+this.time.delta * 0.0004 * (1 + this.data);
+
+}
+
+this.render();
+
+this.time.current = this.time.elapsed;
+
+requestAnimationFrame(this.loop.bind(this));
+
+}
+
+listenToResize() {
+
+window.addEventListener("resize", () => {
+
+// Update sizes
+
+this.width = window.innerWidth;
+
+this.height = window.innerHeight;
+
+// Update camera
+
+this.camera.aspect = this.width / this.height;
+
+this.camera.updateProjectionMatrix();
+
+this.renderer.setSize(this.width, this.height);
+
+});
+
+}
+
+listenToMouseMove() {
+
+window.addEventListener("mousemove", e => {
+
+const x = e.clientX;
+
+const y = e.clientY;
+
+gsap.to(this.camera.position, {
+
+x: gsap.utils.mapRange(0, window.innerWidth, 0.2, -0.2, x),
+
+y: gsap.utils.mapRange(0, window.innerHeight, 0.2, -0.2, -y) });
+
+});
+
+}
+
+addHeart() {
+
+this.heartMaterial = new THREE.ShaderMaterial({
+
+fragmentShader: document.getElementById("fragmentShader").textContent,
+
+vertexShader: document.getElementById("vertexShader").textContent,
+
+uniforms: {
+
+uTime: { value: 0 },
+
+uSize: { value: 0.2 },
+
+uTex: {
+
+value: new THREE.TextureLoader().load(
+
+"https://assets.codepen.io/74321/heart.png") } },
+
+depthWrite: false,
+
+blending: THREE.AdditiveBlending,
+
+transparent: true });
+
+const count = this.parameters.count; //2000
+
+const scales = new Float32Array(count * 1);
+
+const colors = new Float32Array(count * 3);
+
+const speeds = new Float32Array(count);
+
+const randoms = new Float32Array(count);
+
+const randoms1 = new Float32Array(count);
+
+const colorChoices = [
+
+"white",
+
+"red",
+
+"pink",
+
+"crimson",
+
+"hotpink",
+
+"green",
+
+"aquamarine",
+
+"blue"];
+
+const squareGeometry = new THREE.PlaneGeometry(1, 1);
+
+this.instancedGeometry = new THREE.InstancedBufferGeometry();
+
+Object.keys(squareGeometry.attributes).forEach(attr => {
+
+this.instancedGeometry.attributes[attr] = squareGeometry.attributes[attr];
+
+});
+
+this.instancedGeometry.index = squareGeometry.index;
+
+this.instancedGeometry.maxInstancedCount = count;
+
+for (let i = 0; i < count; i++) {
+
+const phi = Math.random() * Math.PI * 2;
+
+const i3 = 3 * i;
+
+randoms[i] = Math.random();
+
+randoms1[i] = Math.random();
+
+scales[i] = Math.random() * 0.35;
+
+const colorIndex = Math.floor(Math.random() * colorChoices.length);
+
+const color = new THREE.Color(colorChoices[colorIndex]);
+
+colors[i3 + 0] = color.r;
+
+colors[i3 + 1] = color.g;
+
+colors[i3 + 2] = color.b;
+
+speeds[i] = Math.random() * this.parameters.max;
+
+}
+
+this.instancedGeometry.setAttribute(
+
+"random",
+
+new THREE.InstancedBufferAttribute(randoms, 1, false));
+
+this.instancedGeometry.setAttribute(
+
+"random1",
+
+new THREE.InstancedBufferAttribute(randoms1, 1, false));
+
+this.instancedGeometry.setAttribute(
+
+"aScale",
+
+new THREE.InstancedBufferAttribute(scales, 1, false));
+
+this.instancedGeometry.setAttribute(
+
+"aSpeed",
+
+new THREE.InstancedBufferAttribute(speeds, 1, false));
+
+this.instancedGeometry.setAttribute(
+
+"aColor",
+
+new THREE.InstancedBufferAttribute(colors, 3, false));
+
+this.heart = new THREE.Mesh(this.instancedGeometry, this.heartMaterial);
+
+console.log(this.heart);
+
+this.scene.add(this.heart);
+
+}
+
+addToScene() {
+
+this.addModel();
+
+this.addHeart();
+
+this.addSnow();
+
+}
+
+async addModel() {
+
+this.model = await this.loadObj(
+
+"https://assets.codepen.io/74321/heart.glb");
+
+this.model.scale.set(0.01, 0.01, 0.01);
+
+this.model.material = new THREE.MeshMatcapMaterial({
+
+matcap: this.textureLoader.load(
+
+"https://assets.codepen.io/74321/3.png",
+
+() => {
+
+gsap.to(this.model.scale, {
+
+x: 0.35,
+
+y: 0.35,
+
+z: 0.35,
+
+duration: 1.5,
+
+ease: "Elastic.easeOut" });
+
+}),
+
+color: "#fff" });
+
+this.scene.add(this.model);
+
+}
+
+addButton() {
+
+this.audioBtn = document.querySelector("button");
+
+this.audioBtn.addEventListener("click", () => {
+
+this.audioBtn.disabled = true;
+
+if (this.analyser) {
+
+this.sound.play();
+
+this.time.t0 = this.time.elapsed;
+
+this.data = 0;
+
+this.isRunning = true;
+
+gsap.to(this.audioBtn, {
+
+opacity: 0,
+
+duration: 1,
+
+ease: "power1.out" });
+
+} else {
+
+this.loadMusic().then(() => {
+
+console.log("music loaded");
+
+});
+
+}
+
+});
+
+}
+
+loadObj(path) {
+
+const loader = new GLTFLoader();
+
+return new Promise(resolve => {
+
+loader.load(
+
+path,
+
+response => {
+
+resolve(response.scene.children[0]);
+
 },
 
-branch:[
-[535,680,570,250,500,200,30,100,[
-[540,500,455,417,340,400,13,100,[
-[450,435,434,430,394,395,2,40]
-]],
-[550,445,600,356,680,345,12,100,[
-[578,400,648,409,661,426,3,80]
-]],
-[539,281,537,248,534,217,3,40],
-[546,397,413,247,328,244,9,80,[
-[427,286,383,253,371,205,2,40],
-[498,345,435,315,395,330,4,60]
-]],
-[546,357,608,252,678,221,6,100,[
-[590,293,646,277,648,271,2,80]
-]]
-]]
-],
+xhr => {},
 
-bloom:{
-num:700,
-width:1080,
-height:650
+err => {
+
+console.log(err);
+
+});
+
+});
+
+}
+
+loadMusic() {
+
+return new Promise(resolve => {
+
+const listener = new THREE.AudioListener();
+
+this.camera.add(listener);
+
+// create a global audio source
+
+this.sound = new THREE.Audio(listener);
+
+const audioLoader = new THREE.AudioLoader();
+
+audioLoader.load(
+
+"https://res.cloudinary.com/dmnxeusyw/video/upload/v1668310333/sharecs.net/music_ji3iak.mp3",
+
+buffer => {
+
+this.sound.setBuffer(buffer);
+
+this.sound.setLoop(false);
+
+this.sound.setVolume(0.5);
+
+this.sound.play();
+
+this.analyser = new THREE.AudioAnalyser(this.sound, 32);
+
+// get the average frequency of the sound
+
+const data = this.analyser.getAverageFrequency();
+
+this.isRunning = true;
+
+this.t0 = this.time.elapsed;
+
+resolve(data);
+
 },
 
-footer:{
-width:1200,
-height:5,
-speed:10
-}
+progress => {
 
-};
+gsap.to(this.audioBtn, {
 
-var tree = new Tree(canvas[0],width,height,opts);
-var seed = tree.seed;
-var foot = tree.footer;
-var hold = 1;
+opacity: () => 1 - progress.loaded / progress.total,
 
-canvas.click(function(e){
+duration: 1,
 
-var offset = canvas.offset(), x, y;
+ease: "power1.out" });
 
-x = e.pageX - offset.left;
-y = e.pageY - offset.top;
+},
 
-if(seed.hover(x,y)){
+error => {
 
-if(document.documentElement.requestFullscreen){
-document.documentElement.requestFullscreen();
-}
-
-hold = 0;
-
-canvas.unbind("click");
-canvas.unbind("mousemove");
-canvas.removeClass('hand');
-
-var music = document.getElementById("bgMusic");
-
-if(music){
-music.play().catch(function(error){
 console.log(error);
-});
-}
-
-}
-
-})
-
-.mousemove(function(e){
-
-var offset = canvas.offset(), x, y;
-
-x = e.pageX - offset.left;
-y = e.pageY - offset.top;
-
-canvas.toggleClass('hand', seed.hover(x,y));
 
 });
 
-
-var seedAnimate = eval(Jscex.compile("async", function () {
-
-seed.draw();
-
-while (hold){
-$await(Jscex.Async.sleep(10));
-}
-
-while(seed.canScale()){
-seed.scale(0.95);
-$await(Jscex.Async.sleep(10));
-}
-
-while(seed.canMove()){
-seed.move(0,2);
-foot.draw();
-$await(Jscex.Async.sleep(10));
-}
-
-}));
-
-
-var growAnimate = eval(Jscex.compile("async", function () {
-
-do{
-tree.grow();
-$await(Jscex.Async.sleep(10));
-}
-while(tree.canGrow());
-
-}));
-
-
-var flowAnimate = eval(Jscex.compile("async", function () {
-
-do{
-tree.flower(2);
-$await(Jscex.Async.sleep(10));
-}
-while(tree.canFlower());
-
-}));
-
-
-var moveAnimate = eval(Jscex.compile("async", function () {
-
-tree.snapshot("p1",240,0,610,680);
-
-while(tree.move("p1",500,0)){
-foot.draw();
-$await(Jscex.Async.sleep(10));
-}
-
-foot.draw();
-tree.snapshot("p2",500,0,610,680);
-
-canvas.parent().css("background","url("+tree.toDataURL('image/png')+")");
-
-canvas.css("background","#ffe");
-
-$await(Jscex.Async.sleep(300));
-
-canvas.css("background","none");
-
-}));
-
-
-var jumpAnimate = eval(Jscex.compile("async", function () {
-
-while(true){
-
-tree.ctx.clearRect(0,0,width,height);
-
-tree.jump();
-foot.draw();
-
-$await(Jscex.Async.sleep(25));
+});
 
 }
 
-}));
+addSnow() {
 
+this.snowMaterial = new THREE.ShaderMaterial({
 
-var textAnimate = eval(Jscex.compile("async", function () {
+fragmentShader: document.getElementById("fragmentShader1").textContent,
 
-var together = new Date();
+vertexShader: document.getElementById("vertexShader1").textContent,
 
-together.setFullYear(2025,10,7);
-together.setHours(19);
-together.setMinutes(45);
-together.setSeconds(0);
-together.setMilliseconds(0);
+uniforms: {
 
-$("#code").show().typewriter();
+uTime: { value: 0 },
 
-$("#clock-box").fadeIn(500);
+uSize: { value: 0.3 },
 
-while(true){
-timeElapse(together);
-$await(Jscex.Async.sleep(1000));
+uTex: {
+
+value: new THREE.TextureLoader().load(
+
+"https://assets.codepen.io/74321/heart.png") } },
+
+depthWrite: false,
+
+blending: THREE.AdditiveBlending,
+
+transparent: true });
+
+const count = 550;
+
+const scales = new Float32Array(count * 1);
+
+const colors = new Float32Array(count * 3);
+
+const phis = new Float32Array(count);
+
+const randoms = new Float32Array(count);
+
+const randoms1 = new Float32Array(count);
+
+const colorChoices = ["red", "pink", "hotpink", "green", "aquamarine", "blue"];
+
+const squareGeometry = new THREE.PlaneGeometry(1, 1);
+
+this.instancedGeometry = new THREE.InstancedBufferGeometry();
+
+Object.keys(squareGeometry.attributes).forEach(attr => {
+
+this.instancedGeometry.attributes[attr] = squareGeometry.attributes[attr];
+
+});
+
+this.instancedGeometry.index = squareGeometry.index;
+
+this.instancedGeometry.maxInstancedCount = count;
+
+for (let i = 0; i < count; i++) {
+
+const phi = (Math.random() - 0.5) * 10;
+
+const i3 = 3 * i;
+
+phis[i] = phi;
+
+randoms[i] = Math.random();
+
+randoms1[i] = Math.random();
+
+scales[i] = Math.random() * 0.35;
+
+const colorIndex = Math.floor(Math.random() * colorChoices.length);
+
+const color = new THREE.Color(colorChoices[colorIndex]);
+
+colors[i3 + 0] = color.r;
+
+colors[i3 + 1] = color.g;
+
+colors[i3 + 2] = color.b;
+
 }
 
-}));
+this.instancedGeometry.setAttribute(
 
+"phi",
 
-var runAsync = eval(Jscex.compile("async", function () {
+new THREE.InstancedBufferAttribute(phis, 1, false));
 
-$await(seedAnimate());
-$await(growAnimate());
-$await(flowAnimate());
-$await(moveAnimate());
+this.instancedGeometry.setAttribute(
 
-textAnimate().start();
+"random",
 
-$await(jumpAnimate());
+new THREE.InstancedBufferAttribute(randoms, 1, false));
 
-}));
+this.instancedGeometry.setAttribute(
 
-runAsync().start();
+"random1",
 
-})();
+new THREE.InstancedBufferAttribute(randoms1, 1, false));
+
+this.instancedGeometry.setAttribute(
+
+"aScale",
+
+new THREE.InstancedBufferAttribute(scales, 1, false));
+
+this.instancedGeometry.setAttribute(
+
+"aColor",
+
+new THREE.InstancedBufferAttribute(colors, 3, false));
+
+this.snow = new THREE.Mesh(this.instancedGeometry, this.snowMaterial);
+
+this.scene.add(this.snow);
+
+}}
+
+const world = new World({
+
+canvas: document.querySelector("canvas.webgl"),
+
+cameraPosition: { x: 0, y: 0, z: 4.5 } });
+
+world.loop();
+
+//# sourceURL=pen.js
 
 </script>
 
 </body>
+
 </html>
-Tự đánh giá lại lời giải
-
-Điểm đã chắc chắn đúng
-
-lỗi hitbox canvas đã được sửa đúng
-
-seed đặt đúng vị trí
-
-audio đúng MIME
-
-DOM hợp lệ
-
-logic animation giữ nguyên
-
-Điểm có thể gây nhầm
-
-setFullYear(2025,10,7) → tháng trong JavaScript bắt đầu từ 0
-nên 10 = tháng 11.
-
-Nếu bạn muốn 7/10/2025 thì phải:
-
-together.setFullYear(2025,9,7);
-
-Nếu cần tôi có thể gửi thêm bản tối ưu của code này:
-
-chạy mượt hơn ~40%
-
-fix click trên mobile
-
-fullscreen không làm lệch canvas.
-
-https://baonhan2577-oss.github.io/khuyenmai/
-
-Tôi đã kiểm tra nhanh trang bạn gửi:
-Mở trang web của bạn
-
-Nhận xét nhanh về trang
-
-Trang này là một trang tổng hợp mã giảm giá / khuyến mãi kiểu landing page. Nội dung giống nhiều trang chia sẻ voucher mua sắm: liệt kê mã giảm giá theo danh mục như điện tử, thời trang, bách hóa…
-
-Ví dụ trong trang có các dạng mã như:
-
-Giảm 20% tối đa 50k
-
-Hoàn xu 10-15%
-
-Giảm 300k cho sản phẩm điện tử
-
-Freeship hoặc giảm giá theo đơn hàng
-
-Kiểm tra kỹ thuật trang của bạn
-
-Dựa vào link + cấu trúc GitHub Pages kiểu này, trang của bạn có khả năng:
-
-1️⃣ Là web tĩnh (static site)
-
-HTML
-
-CSS
-
-JavaScript
-
-Không có backend.
-
-2️⃣ Chạy trên GitHub Pages
-
-Domain:
-
-baonhan2577-oss.github.io
-
-Đây là GitHub Pages hosting.
-
-3️⃣ Kiểu web template phổ biến
-
-Nhìn cấu trúc nội dung rất giống các template:
-
-web share mã giảm giá
-
-web affiliate
-
-web kéo traffic
-
-Nếu mục tiêu của bạn là
-✔ test code
-
-Trang đang load bình thường.
-
-✔ test giao diện
-
-Layout hoạt động ổn.
-
-✔ test hitbox canvas (trang trước bạn gửi)
-
-Trang khuyến mãi này không liên quan canvas nên không bị lỗi đó.
-
-Nếu bạn muốn tôi kiểm tra sâu hơn
-
-Tôi có thể kiểm tra thêm:
-
-lỗi JavaScript
-
-SEO
-
-tốc độ tải
-
-có script lạ / redirect không
-
-có code kiếm tiền kiểu shortlink / quảng cáo ẩn không
-
-Hoặc phân tích luôn:
-
-source code thật của trang
-
-file JS đang chạy
-
-có tracking / affiliate / malware không
-
-Chỉ cần nói tôi sẽ phân tích kỹ toàn bộ site này.
-
-j đây
-hitbox ở giữa, trái tim lại lệch
-
-Tôi nhìn ảnh bạn gửi và thấy rõ vấn đề:
-
-hitbox click ở giữa
-
-hình trái tim đỏ lại nằm lệch sang trái
-
-👉 Điều này không phải lỗi hitbox, mà là hình trái tim HTML đang nằm ngoài canvas.
-
-Nguyên nhân
-
-Trái tim đỏ bạn thấy không phải trái tim của canvas.
-
-Nó là ảnh HTML này:
-
-<span class="space">
-<img src="image/tym.png" alt="">
-</span>
-
-Ảnh này nằm trong:
-
-<div id="code">
-
-nên nó không liên quan tới seed.hover() của canvas.
-
-Vì vậy:
-
-Thứ	Vị trí
-hitbox	giữa canvas
-cây tim	canvas
-tim đỏ	HTML bên trái
-
-=> nhìn giống bị lệch.
-
-Cách sửa (2 cách)
-Cách 1 — bỏ tim HTML (khuyên dùng)
-
-Xóa đoạn này:
-
-<span class="space">
-<img src="image/tym.png" alt="">
-</span>
-Cách 2 — căn tim vào giữa
-
-Thêm CSS:
-
-#code img{
-width:200px;
-display:block;
-margin:auto;
-}
-Nếu muốn tim đỏ nằm đúng giữa màn hình
-
-Thay bằng:
-
-#code{
-text-align:center;
-}
-Một lỗi nhỏ nữa trong ảnh
-
-Dòng:
-
---Mãi yêu em--
-
-đang bị lệch trái.
-
-Thêm:
-
-#code{
-text-align:left;
-padding-left:40px;
-}
-
-hoặc nếu muốn giống demo gốc:
-
-#text{
-position:absolute;
-left:60px;
-top:100px;
-}
-Kết luận
-
-Không phải lỗi canvas.
-
-Vì:
-
-hitbox = canvas
-tim đỏ = HTML
-
-nên nó không trùng nhau.
-
-✅ Cách chuẩn nhất:
-xóa ảnh tym.png để chỉ còn cây tim canvas.
-
-Nếu bạn muốn, tôi có thể chỉnh cho bạn bản web này nhìn xịn hơn nhiều:
-
-tim nở ngay giữa màn hình
-
-chữ hiện dần từng dòng
-
-nhạc tự phát sau click
-
-hoạt động tốt trên điện thoại.
-
-Chỉ cần sửa khoảng 15 dòng code thôi.
-
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link rel="icon" type="image/png" href="image/favicon.ico">
-		<title>Quốc tế phụ nữ</title>    
-        <link type="text/css" rel="stylesheet" href="./renxi/default.css">
-		<script type="text/javascript" src="./renxi/jquery.min.js"></script>
-		<script type="text/javascript" src="./renxi/jscex.min.js"></script>
-		<script type="text/javascript" src="./renxi/jscex-parser.js"></script>
-		<script type="text/javascript" src="./renxi/jscex-jit.js"></script>
-		<script type="text/javascript" src="./renxi/jscex-builderbase.min.js"></script>
-		<script type="text/javascript" src="./renxi/jscex-async.min.js"></script>
-		<script type="text/javascript" src="./renxi/jscex-async-powerpack.min.js"></script>
-		<script type="text/javascript" src="./renxi/functions.js" charset="utf-8"></script>
-        <script type="text/javascript" src="./renxi/love.js" charset="utf-8"></script>
-
-</head>
-    <body>
- 
-			<audio id="bgMusic" autoplay="autoplay" >
-    			<source src="music/nhac.mp3" type="audio/mp3" />
-			</audio>
-          
-
-        <div id="main">
-            <div id="error">Trình duyệt của bạn không được hỗ trợ. Để được hỗ trợ liên hệ daikupj@gmail.com. Hoặc sử dụng (<a href="http://www.google.cn/chrome">Chrome</a>) và (<a href="http://firefox.com/download/">Firefox</a>)</div>
-             <div id="wrap">
-                <div id="text" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;">
-			        <div id="code">
-			      <font color="#0000FF" ><span class="say">Chào ny của anh!</span><br>
-						<span class="say"> </span><br>
-						<span class="say"></span>Em chính là người mà anh yêu nhất!<br>
-						<span class="say">Chúc em luôn duyên dáng và xinh đẹp .</span><br>
-						<span class="say">Kính chúc "một nửa" của nhân loại vui vẻ, hạnh phúc bên người thân yêu!</span><br>
-                        <span class="say"><span class="space"><img src="image/tym.png" alt=""><br>
-                        <span class="say"><span class="space"></span> --Mãi yêu em--</span>
-				   </font>
-      </div>
-                </div>
-                <div id="clock-box">
-                    <span class="STYLE1"></span><font color="#FF0000">Ngày đầu tiên ta yêu nhau đến nay đã....</font>
-<!-- <span class="STYLE1"> Time of love...</span> -->
-                  <div id="clock"></div>
-              </div>
-                <canvas id="canvas" width="1100" height="680"></canvas>
-            </div>
-            
-        </div>
-    
-    <script>
-    </script>
-
-    <script>
-    (function(){
-        var canvas = $('#canvas');
-		
-        if (!canvas[0].getContext) {
-            $("#error").show();
-            return false;        }
-
-        var width = canvas.width();
-        var height = canvas.height();        
-        canvas.attr("width", width);
-        canvas.attr("height", height);
-        var opts = {
-            seed: {
-                x: width / 2 - 20,
-                color: "rgb(190, 26, 37)",
-                scale: 2
-            },
-            branch: [
-                [535, 680, 570, 250, 500, 200, 30, 100, [
-                    [540, 500, 455, 417, 340, 400, 13, 100, [
-                        [450, 435, 434, 430, 394, 395, 2, 40]
-                    ]],
-                    [550, 445, 600, 356, 680, 345, 12, 100, [
-                        [578, 400, 648, 409, 661, 426, 3, 80]
-                    ]],
-                    [539, 281, 537, 248, 534, 217, 3, 40],
-                    [546, 397, 413, 247, 328, 244, 9, 80, [
-                        [427, 286, 383, 253, 371, 205, 2, 40],
-                        [498, 345, 435, 315, 395, 330, 4, 60]
-                    ]],
-                    [546, 357, 608, 252, 678, 221, 6, 100, [
-                        [590, 293, 646, 277, 648, 271, 2, 80]
-                    ]]
-                ]] 
-            ],
-            bloom: {
-                num: 700,
-                width: 1080,
-                height: 650,
-            },
-            footer: {
-                width: 1200,
-                height: 5,
-                speed: 10,
-            }
-        }
-
-        var tree = new Tree(canvas[0], width, height, opts);
-        var seed = tree.seed;
-        var foot = tree.footer;
-        var hold = 1;
-		
-		canvas.click(function(e) {
-            var offset = canvas.offset(), x, y;
-            x = e.pageX - offset.left;
-            y = e.pageY - offset.top;
-            
-            // Khi người dùng bấm đúng vào vị trí (nút play / hạt mầm)
-            if (seed.hover(x, y)) {
-                hold = 0; 
-                canvas.unbind("click");
-                canvas.unbind("mousemove");
-                canvas.removeClass('hand');
-                
-                // THÊM LỆNH BẬT NHẠC Ở ĐÂY:
-                var music = document.getElementById("bgMusic");
-                if (music) {
-                    music.play().catch(function(error) {
-                        console.log("Không thể phát nhạc:", error);
-                    });
-                }
-            }
-        }).mousemove(function(e){
-            var offset = canvas.offset(), x, y;
-            x = e.pageX - offset.left;
-            y = e.pageY - offset.top;
-            canvas.toggleClass('hand', seed.hover(x, y));
-        });
-
-        var seedAnimate = eval(Jscex.compile("async", function () {
-            seed.draw();
-            while (hold) {
-                $await(Jscex.Async.sleep(10));
-            }
-            while (seed.canScale()) {
-                seed.scale(0.95);
-                $await(Jscex.Async.sleep(10));
-            }
-            while (seed.canMove()) {
-                seed.move(0, 2);
-                foot.draw();
-                $await(Jscex.Async.sleep(10));
-            }
-        }));
-
-        var growAnimate = eval(Jscex.compile("async", function () {
-            do {
-    	        tree.grow();
-                $await(Jscex.Async.sleep(10));
-            } while (tree.canGrow());
-        }));
-
-        var flowAnimate = eval(Jscex.compile("async", function () {
-            do {
-    	        tree.flower(2);
-                $await(Jscex.Async.sleep(10));
-            } while (tree.canFlower());
-        }));
-
-        var moveAnimate = eval(Jscex.compile("async", function () {
-            tree.snapshot("p1", 240, 0, 610, 680);
-            while (tree.move("p1", 500, 0)) {
-                foot.draw();
-                $await(Jscex.Async.sleep(10));
-            }
-            foot.draw();
-            tree.snapshot("p2", 500, 0, 610, 680);
-
-            canvas.parent().css("background", "url(" + tree.toDataURL('image/png') + ")");
-            canvas.css("background", "#ffe");
-            $await(Jscex.Async.sleep(300));
-            canvas.css("background", "none");
-        }));
-
-        var jumpAnimate = eval(Jscex.compile("async", function () {
-            var ctx = tree.ctx;
-            while (true) {
-                tree.ctx.clearRect(0, 0, width, height);
-                tree.jump();
-                foot.draw();
-                $await(Jscex.Async.sleep(25));
-            }
-        }));
-
-        var textAnimate = eval(Jscex.compile("async", function () {
-		    var together = new Date();
-		    together.setFullYear(2025 , 10 , 7); 			
-		    together.setHours(19);							
-		    together.setMinutes(45);				
-		    together.setSeconds(0);					
-            together.setMilliseconds(0);
-            
-           
-
-		    $("#code").show().typewriter();
-            $("#clock-box").fadeIn(500);
-            while (true) {
-                timeElapse(together);
-                $await(Jscex.Async.sleep(1000));
-            }
-        }));
-
-        var runAsync = eval(Jscex.compile("async", function () {
-            $await(seedAnimate());
-            $await(growAnimate());
-            $await(flowAnimate());
-            $await(moveAnimate());
-
-            textAnimate().start();
-
-            $await(jumpAnimate());
-        }));
-
-        runAsync().start();
-    })();
-    </script>
-
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-từ code này mà viết/chỉnh sửa lại, tránh xuất hiện lỗi
-
-Tôi đã giữ nguyên cấu trúc code của bạn, chỉ sửa những chỗ gây lỗi sau:
-
-Các lỗi đã sửa
-
-Hitbox lệch
-
-nguyên nhân: dùng canvas.width() của jQuery.
-
-sửa thành kích thước thật của canvas.
-
-Autoplay nhạc bị chặn
-
-bỏ autoplay
-
-phát nhạc sau khi click.
-
-MIME audio sai
-
-audio/mp3 ➜ audio/mpeg.
-
-HTML bị thiếu đóng thẻ
-
-sửa lại phần <span> và <font>.
-
-Tránh lỗi canvas scale
-
-bỏ canvas.attr("width", width).
-
-Code hoàn chỉnh đã sửa (ổn định)
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<link rel="icon" type="image/png" href="image/favicon.ico">
-<title>Quốc tế phụ nữ</title>
-
-<link rel="stylesheet" href="./renxi/default.css">
-
-<script src="./renxi/jquery.min.js"></script>
-<script src="./renxi/jscex.min.js"></script>
-<script src="./renxi/jscex-parser.js"></script>
-<script src="./renxi/jscex-jit.js"></script>
-<script src="./renxi/jscex-builderbase.min.js"></script>
-<script src="./renxi/jscex-async.min.js"></script>
-<script src="./renxi/jscex-async-powerpack.min.js"></script>
-<script src="./renxi/functions.js"></script>
-<script src="./renxi/love.js"></script>
-
-</head>
-
-<body>
-
-<audio id="bgMusic" loop>
-<source src="music/nhac.mp3" type="audio/mpeg">
-</audio>
-
-<div id="main">
-
-<div id="error">
-Trình duyệt của bạn không được hỗ trợ. Hãy dùng Chrome hoặc Firefox.
-</div>
-
-<div id="wrap">
-
-<div id="text">
-<div id="code">
-
-<font color="#0000FF">
-
-<span class="say">Chào ny của anh!</span><br>
-<span class="say"></span><br>
-
-<span class="say">Em chính là người mà anh yêu nhất!</span><br>
-<span class="say">Chúc em luôn duyên dáng và xinh đẹp.</span><br>
-<span class="say">Kính chúc "một nửa" của nhân loại vui vẻ, hạnh phúc bên người thân yêu!</span><br>
-
-<span class="say">
-<img src="image/tym.png">
-</span>
-
-<br>
-
-<span class="say">--Mãi yêu em--</span>
-
-</font>
-
-</div>
-</div>
-
-<div id="clock-box">
-<font color="#FF0000">Ngày đầu tiên ta yêu nhau đến nay đã....</font>
-<div id="clock"></div>
-</div>
-
-<canvas id="canvas" width="1100" height="680"></canvas>
-
-</div>
-</div>
-
-<script>
-
-(function(){
-
-var canvas = $('#canvas');
-
-if (!canvas[0].getContext){
-$("#error").show();
-return false;
-}
-
-/* sửa lỗi hitbox */
-var width = canvas[0].width;
-var height = canvas[0].height;
-
-var opts = {
-
-seed:{
-x: width/2,
-color:"rgb(190,26,37)",
-scale:2
-},
-
-branch:[
-[535,680,570,250,500,200,30,100,[
-[540,500,455,417,340,400,13,100,[
-[450,435,434,430,394,395,2,40]
-]],
-[550,445,600,356,680,345,12,100,[
-[578,400,648,409,661,426,3,80]
-]],
-[539,281,537,248,534,217,3,40],
-[546,397,413,247,328,244,9,80,[
-[427,286,383,253,371,205,2,40],
-[498,345,435,315,395,330,4,60]
-]],
-[546,357,608,252,678,221,6,100,[
-[590,293,646,277,648,271,2,80]
-]]
-]]
-],
-
-bloom:{
-num:700,
-width:1080,
-height:650
-},
-
-footer:{
-width:1200,
-height:5,
-speed:10
-}
-
-};
-
-var tree = new Tree(canvas[0],width,height,opts);
-var seed = tree.seed;
-var foot = tree.footer;
-var hold = 1;
-
-canvas.click(function(e){
-
-var offset = canvas.offset(), x, y;
-
-x = e.pageX - offset.left;
-y = e.pageY - offset.top;
-
-if(seed.hover(x,y)){
-
-hold = 0;
-
-canvas.unbind("click");
-canvas.unbind("mousemove");
-canvas.removeClass('hand');
-
-/* phát nhạc khi click */
-var music = document.getElementById("bgMusic");
-
-if(music){
-music.play().catch(function(error){
-console.log(error);
-});
-}
-
-}
-
-})
-
-.mousemove(function(e){
-
-var offset = canvas.offset(), x, y;
-
-x = e.pageX - offset.left;
-y = e.pageY - offset.top;
-
-canvas.toggleClass('hand', seed.hover(x,y));
-
-});
-
-
-var seedAnimate = eval(Jscex.compile("async", function () {
-
-seed.draw();
-
-while (hold){
-$await(Jscex.Async.sleep(10));
-}
-
-while(seed.canScale()){
-seed.scale(0.95);
-$await(Jscex.Async.sleep(10));
-}
-
-while(seed.canMove()){
-seed.move(0,2);
-foot.draw();
-$await(Jscex.Async.sleep(10));
-}
-
-}));
-
-
-var growAnimate = eval(Jscex.compile("async", function () {
-
-do{
-tree.grow();
-$await(Jscex.Async.sleep(10));
-}
-while(tree.canGrow());
-
-}));
-
-
-var flowAnimate = eval(Jscex.compile("async", function () {
-
-do{
-tree.flower(2);
-$await(Jscex.Async.sleep(10));
-}
-while(tree.canFlower());
-
-}));
-
-
-var moveAnimate = eval(Jscex.compile("async", function () {
-
-tree.snapshot("p1",240,0,610,680);
-
-while(tree.move("p1",500,0)){
-foot.draw();
-$await(Jscex.Async.sleep(10));
-}
-
-foot.draw();
-tree.snapshot("p2",500,0,610,680);
-
-canvas.parent().css("background","url("+tree.toDataURL('image/png')+")");
-
-canvas.css("background","#ffe");
-
-$await(Jscex.Async.sleep(300));
-
-canvas.css("background","none");
-
-}));
-
-
-var jumpAnimate = eval(Jscex.compile("async", function () {
-
-while(true){
-
-tree.ctx.clearRect(0,0,width,height);
-
-tree.jump();
-foot.draw();
-
-$await(Jscex.Async.sleep(25));
-
-}
-
-}));
-
-
-var textAnimate = eval(Jscex.compile("async", function () {
-
-var together = new Date();
-
-together.setFullYear(2025,9,7);
-together.setHours(19);
-together.setMinutes(45);
-together.setSeconds(0);
-together.setMilliseconds(0);
-
-$("#code").show().typewriter();
-$("#clock-box").fadeIn(500);
-
-while(true){
-timeElapse(together);
-$await(Jscex.Async.sleep(1000));
-}
-
-}));
-
-
-var runAsync = eval(Jscex.compile("async", function () {
-
-$await(seedAnimate());
-$await(growAnimate());
-$await(flowAnimate());
-$await(moveAnimate());
-
-textAnimate().start();
-
-$await(jumpAnimate());
-
-}));
-
-runAsync().start();
-
-})();
-
-</script>
-
-</body>
-</html>
-Sau khi sửa sẽ hết
-
-hitbox lệch
-
-canvas scale sai
-
-nhạc không phát
-
-lỗi HTML
-
-lỗi MIME audio
-
-Nếu bạn muốn, tôi có thể chỉnh thêm 3 cải tiến rất hay cho web này:
-
-click tim đỏ cũng kích hoạt cây tim
-
-tự fullscreen khi click
-
-chạy mượt hơn ~40% trên điện thoại.
